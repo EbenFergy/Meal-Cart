@@ -31,6 +31,10 @@ const HeaderStyle = styled.div`
     }
   }
 
+  /* .button:hover {
+      transform: scale(1.05);
+    } */
+
   .orderno {
     padding: 0.2rem 0.5rem;
     border-radius: 100%;
