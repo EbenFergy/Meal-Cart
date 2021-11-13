@@ -1,4 +1,19 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const transthisguy = keyframes`
+0%{
+    transform: scale(1);
+    opacity: 0;
+}
+20%{
+    /* transform: scale(1); */
+    opacity: 1;
+}
+100%{
+    transform: scale(1.2); 
+    opacity: 1;
+}
+`;
 
 const MealStyle = styled.div`
   * {
@@ -13,6 +28,7 @@ const MealStyle = styled.div`
   justify-content: center;
   /* border: 2px solid; */
   margin: 0;
+  /* width: 100vw; */
 
   .meal-cont {
     height: 300px;
@@ -22,28 +38,12 @@ const MealStyle = styled.div`
     overflow: hidden;
   }
 
-  .mealOverlay {
-    transition: background-color 0.5s ease-in-out;
+  ..meal-cont img {
+    object-fit: cover;
   }
 
   .addBtn {
-    background-color: #ff593d;
-  }
-
-  .meal-cont:hover .mealOverlay {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    color: black;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .meal-cont:hover .mealOverlay::after {
-    content: "Nice seasoned pasta";
-    color: #c4c4c4;
+    /* background-color: #ff593d; */
   }
 
   .meal-cont__detail {
@@ -60,7 +60,7 @@ const MealStyle = styled.div`
   }
 
   .meal-name span {
-    color: #ff593d;
+    color: #ff7300;
   }
 
   .input-cont {
@@ -88,8 +88,11 @@ const MealStyle = styled.div`
     background: red;
     height: 300px;
     width: 100%;
-    transition: transform 0.5s ease-in-out;
+    height: fit-content;
     border-radius: 10px;
+    background: rgba(14, 17, 26, 1);
+    border: 2px solid red;
+    opacity: 0;
   }
 
   .mainMeal {
@@ -98,7 +101,7 @@ const MealStyle = styled.div`
 
   .mainMeal:hover .innerMeal {
     display: block;
-    transform: ${(props) => props.transformVal};
+    animation: ${transthisguy} 0.4s ease-in-out 0.2s forwards;
   }
 `;
 

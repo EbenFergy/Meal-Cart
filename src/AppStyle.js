@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
 const AppStyle = styled.div`
-  background-color: #ebebeb;
-  
-  overflow: scroll;
+  background-color: rgba(14, 17, 26, 1);
+  color: #ffff;
+  width: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   .check {
-    height: 2000px;
+    z-index: 10;
+    position: absolute;
   }
 `;
 
