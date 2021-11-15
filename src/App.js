@@ -1,19 +1,71 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import Header from "./Header/Header";
 import AppStyle from "./AppStyle";
 import Meals from "./Meals/Meals";
 import Axios from "axios";
 
-function App() {
-  const [apiData, setApiData] = useState([]);
+const initialState = {
+  apiData: [],
+  querySearch: "",
+  foodCountry: "",
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "API_DATA":
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
+
+    case "QUERY_SEARCH":
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
+
+    case "FOOD_COUNTRY":
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
+    default:
+      return state;
+  }
+};
+
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const querySearchChange = (querySearchName) => {
+    dispatch({
+      type: "QUERY_SEARCH",
+      value: querySearchName,
+      key: "querySearch",
+    });
+  };
+
+  const foodCountryChange = (foodCountryName) => {
+    dispatch({
+      type: "FOOD_COUNTRY",
+      value: foodCountryName,
+      key: "foodCountry",
+    });
+  };
 
   const url =
-    "https://api.edamam.com/api/recipes/v2?type=public&q=chicken%2C%20rice&app_id=e2d17e16&app_key=21e78aa13aca110a1c140b69f2d2bdd4&diet=balanced&cuisineType=American&cuisineType=Asian&cuisineType=British&cuisineType=Caribbean&cuisineType=Central%20Europe&cuisineType=Chinese&cuisineType=Eastern%20Europe&cuisineType=French&cuisineType=Indian&cuisineType=Italian&cuisineType=Japanese&cuisineType=Kosher&cuisineType=Mediterranean&cuisineType=Mexican&cuisineType=Middle%20Eastern&cuisineType=Nordic&cuisineType=South%20American&cuisineType=South%20East%20Asian&mealType=Breakfast&mealType=Dinner&mealType=Lunch&mealType=Snack&mealType=Teatime&random=true";
+      "https://api.edamam.com/api/recipes/v2?type=public&q=chicken%2C%20rice&app_id=e2d17e16&app_key=21e78aa13aca110a1c140b69f2d2bdd4&diet=balanced&cuisineType=American&cuisineType=Asian&cuisineType=British&cuisineType=Caribbean&cuisineType=Central%20Europe&cuisineType=Chinese&cuisineType=Eastern%20Europe&cuisineType=French&cuisineType=Indian&cuisineType=Italian&cuisineType=Japanese&cuisineType=Kosher&cuisineType=Mediterranean&cuisineType=Mexican&cuisineType=Middle%20Eastern&cuisineType=Nordic&cuisineType=South%20American&cuisineType=South%20East%20Asian&mealType=Breakfast&mealType=Dinner&mealType=Lunch&mealType=Snack&mealType=Teatime&random=true"
+    // `https://api.edamam.com/api/recipes/v2?type=public&q=${state.querySearch}&app_id=e2d17e16&app_key=21e78aa13aca110a1c140b69f2d2bdd4&cuisineType=American&dishType=Biscuits%20and%20cookies&dishType=Cereals&dishType=Condiments%20and%20sauces&dishType=Desserts&dishType=Main%20course&dishType=Pancake&dishType=Salad&dishType=Sandwiches&dishType=Soup&dishType=Sweets`;
+    // `https://api.edamam.com/api/recipes/v2?type=public&q=recipe&app_id=e2d17e16&app_key=21e78aa13aca110a1c140b69f2d2bdd4&diet=balanced&cuisineType=American&cuisineType=Central%20Europe&cuisineType=Eastern%20Europe&dishType=Biscuits%20and%20cookies&dishType=Cereals&dishType=Condiments%20and%20sauces&dishType=Desserts&dishType=Main%20course&dishType=Pancake&dishType=Salad&dishType=Sandwiches&dishType=Soup&dishType=Sweets`;
 
   useEffect(() => {
     const getData = async () => {
       const result = await Axios.get(url);
-      setApiData(result.data.hits);
+      dispatch({
+        type: "API_DATA",
+        value: result.data.hits,
+        key: "apiData",
+      });
       return result;
     };
     getData();
@@ -22,9 +74,13 @@ function App() {
   return (
     <AppStyle>
       <Header />
-      <Meals apiData={apiData} />
+      <Meals
+        apiData={state.apiData}
+        foodCountry={foodCountryChange}
+        querySearch={querySearchChange}
+      />
     </AppStyle>
   );
-}
+};
 
 export default App;
