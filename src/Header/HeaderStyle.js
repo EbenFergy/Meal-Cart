@@ -18,8 +18,8 @@ const HeaderStyle = styled.div`
     background: #212121;
     background: linear-gradient(
       -90deg,
-      rgba(14, 17, 26, 1) 0%,
-      rgba(37, 46, 70, 1) 100%
+      rgba(14, 17, 26, 0.9) 0%,
+      rgba(37, 46, 70, 0.9) 100%
     );
     color: #ffff;
     justify-content: space-between;
@@ -29,9 +29,7 @@ const HeaderStyle = styled.div`
     top: 0;
     right: 0;
     left: 0;
-
     transition: all 0.5s ease-in-out;
-    opacity: 90%;
     z-index: 1;
   }
 
@@ -43,7 +41,7 @@ const HeaderStyle = styled.div`
     transition: all 0.5s ease;
 
     :hover {
-      transform: scale(1.05);
+      transform: scale(1.07);
     }
   }
 
