@@ -63,7 +63,7 @@ const App = () => {
     let foodPerCountry = [];
     CountryNames.map((object) => {
       // <h1>{object.country}</h1>;
-      const url = `https://api.edamam.com/api/recipes/v2?type=public&q=recipe&app_id=e2d17e16&app_key=21e78aa13aca110a1c140b69f2d2bdd4&diet=balanced&cuisineType=${object.country}&cuisineType=Central%20Europe&cuisineType=Eastern%20Europe&dishType=Biscuits%20and%20cookies&dishType=Cereals&dishType=Condiments%20and%20sauces&dishType=Desserts&dishType=Main%20course&dishType=Pancake&dishType=Salad&dishType=Sandwiches&dishType=Soup&dishType=Sweets`;
+      const url = `https://api.edamam.com/api/recipes/v2?type=public&q=recipe&app_id=e2d17e16&app_key=b0ef2f6409d600438b0d9d5f2b6aeada&diet=balanced&cuisineType=${object.country}&cuisineType=Central%20Europe&cuisineType=Eastern%20Europe&dishType=Biscuits%20and%20cookies&dishType=Cereals&dishType=Condiments%20and%20sauces&dishType=Desserts&dishType=Main%20course&dishType=Pancake&dishType=Salad&dishType=Sandwiches&dishType=Soup&dishType=Sweets`;
       Axios.get(url).then((res) => {
         let countryObj = {
           countryName: object.country.trim(),

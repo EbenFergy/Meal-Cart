@@ -2,8 +2,6 @@ import React from "react";
 import MealStyle from "./MealStyle";
 import Button from "../Re-usables/Button";
 import InputStyle from "../Re-usables/InputStyle";
-import CountryNames from "./Countries";
-import Axios from "axios";
 
 const Meals = ({ apiData, foodCountry, querySearch }) => {
   return (
@@ -28,7 +26,7 @@ const Meals = ({ apiData, foodCountry, querySearch }) => {
                         </div>
                         <div className="meal-cont__detail">
                           <div className="meal-name">
-                            <p> Spaghetti</p> <span>$5.00</span>
+                            <p> {recipe.label}</p> <span>$5.00</span>
                           </div>
                           <form>
                             <div className="input-cont">
