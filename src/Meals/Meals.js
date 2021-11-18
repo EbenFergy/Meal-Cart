@@ -4,6 +4,7 @@ import Button from "../Re-usables/Button";
 import InputStyle from "../Re-usables/InputStyle";
 
 const Meals = ({ apiData, foodCountry, querySearch }) => {
+  console.log("capiDataMeals", apiData);
   return (
     <>
       {apiData.map((countries) => {
@@ -11,7 +12,7 @@ const Meals = ({ apiData, foodCountry, querySearch }) => {
           <>
             <h1>{countries.countryName}</h1>
 
-            <MealStyle>
+            {/* <MealStyle>
               {countries.countryRecipes.map(({ recipe }) => {
                 return (
                   <>
@@ -50,7 +51,7 @@ const Meals = ({ apiData, foodCountry, querySearch }) => {
                   </>
                 );
               })}
-            </MealStyle>
+            </MealStyle> */}
           </>
         );
       })}

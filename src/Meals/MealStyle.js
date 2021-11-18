@@ -93,6 +93,7 @@ const MealStyle = styled.div`
     flex-direction: column;
     gap: 0.5rem;
     font-weight: 700;
+    font-size: 0.5rem;
   }
 
   .meal-name span {
