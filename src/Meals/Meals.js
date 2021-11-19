@@ -12,7 +12,7 @@ const Meals = ({ apiData, foodCountry, querySearch }) => {
           <>
             <h1>{countries.countryName}</h1>
 
-            {/* <MealStyle>
+            <MealStyle>
               {countries.countryRecipes.map(({ recipe }) => {
                 return (
                   <>
@@ -51,7 +51,7 @@ const Meals = ({ apiData, foodCountry, querySearch }) => {
                   </>
                 );
               })}
-            </MealStyle> */}
+            </MealStyle>
           </>
         );
       })}
