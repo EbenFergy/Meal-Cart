@@ -4,15 +4,7 @@ import Button from "../Re-usables/Button";
 import InputStyle from "../Re-usables/InputStyle";
 
 const Meals = ({ apiData }) => {
-  console.log("apiDataMeals", apiData);
-  const filtered = apiData.filter(
-    ({ recipe }) => recipe.cuisineType[0] === "american"
-  );
-  console.log("filter", filtered);
-  return (
-    <>
-      <MealStyle>
-        {filtered.map(({ recipe }) => {
+  
           return (
             <div key={recipe.calories} className="mainMeal">
               <div className="meal-cont">
