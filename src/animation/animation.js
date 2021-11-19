@@ -14,7 +14,7 @@ export const transthisguy = keyframes`
 
 }
 100%{
-    transform: scale(1.2);
+    transform: scale(1.3);
     opacity: 1;
 
 }

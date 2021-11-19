@@ -14,7 +14,7 @@ const MealStyle = styled.div`
 
   padding: 4rem 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 40px 10px;
   justify-content: center;
   /* border: 2px solid; */
@@ -22,9 +22,9 @@ const MealStyle = styled.div`
   /* width: 100vw; */
 
   .meal-cont {
-    height: 200px;
+    height: 250px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
     margin: 0;
     background-color: #c4c4c4;
     overflow: hidden;
@@ -36,6 +36,7 @@ const MealStyle = styled.div`
   }
 
   .addBtn {
+    width: 7rem;
     animation: ${slideUp} 0.5s ease-in forwards;
 
     /* background-color: #ff593d; */
@@ -83,27 +84,40 @@ const MealStyle = styled.div`
   .meal-cont__detail {
     height: 0;
     display: flex;
-    justify-content: space-between;
-    margin-top: 0.5rem;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* margin-top: 0.5rem; */
     padding: 1rem 1.5rem;
+    gap: 0.5rem;
+    /* border: 2px solid; */
   }
 
   .meal-name {
-    display: flex;
-    flex-direction: column;
     gap: 0.5rem;
     font-weight: 700;
-    font-size: 0.5rem;
+    font-size: 0.9rem;
+    /* border: 2px solid; */
+  }
+
+  .meal-form {
+    display: flex;
+    /* border: 2px solid; */
+    justify-content: space-between;
+  }
+
+  .meal-price {
+    /* color: #ff7300; */
+    color: #46d369;
+    font-weight: 700;
+    font-size: 0.9rem;
   }
 
   .meal-name span {
-    /* color: #ff7300; */
-    color: #46d369;
   }
 
   .input-cont {
     align-self: flex-end;
-    animation: ${slideUp} 0.4s ease-in forwards;
+    /* animation: ${slideUp} 0.4s ease-in forwards; */
   }
 
   .amountInput {
