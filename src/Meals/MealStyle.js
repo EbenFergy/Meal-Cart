@@ -12,7 +12,7 @@ const MealStyle = styled.div`
     margin: 0;
   }
 
-  padding: 4rem 2rem;
+  padding: 1rem 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 40px 10px;
@@ -24,7 +24,7 @@ const MealStyle = styled.div`
   .meal-cont {
     height: 250px;
     width: 100%;
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px;
     margin: 0;
     background-color: #c4c4c4;
     overflow: hidden;
@@ -36,7 +36,7 @@ const MealStyle = styled.div`
   }
 
   .addBtn {
-    width: 7rem;
+    width: 8rem;
     animation: ${slideUp} 0.5s ease-in forwards;
 
     /* background-color: #ff593d; */
@@ -56,7 +56,7 @@ const MealStyle = styled.div`
     /* border: 2px solid red; */
     opacity: 0;
     overflow: hidden;
-    box-shadow: 0px 0px 3px 1px rgba(5, 8, 17, 1);
+    box-shadow: 0px 0px 6px 2px rgba(5, 8, 17, 1);
   }
 
   .mainMeal {
@@ -67,6 +67,11 @@ const MealStyle = styled.div`
     display: block;
     animation: ${transthisguy} 0.4s ease-in forwards;
     position: absolute;
+    width: 110%;
+
+    .meal-cont {
+      border-radius: 10px 10px 0 0;
+    }
 
     .meal-cont__detail {
       animation: ${IncreaseHeight} 0.2s ease-in forwards;
@@ -94,8 +99,9 @@ const MealStyle = styled.div`
 
   .meal-name {
     gap: 0.5rem;
-    font-weight: 700;
+    font-weight: 550;
     font-size: 0.9rem;
+    opacity: 0.8;
     /* border: 2px solid; */
   }
 
@@ -110,9 +116,6 @@ const MealStyle = styled.div`
     color: #46d369;
     font-weight: 700;
     font-size: 0.9rem;
-  }
-
-  .meal-name span {
   }
 
   .input-cont {

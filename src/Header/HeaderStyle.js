@@ -24,7 +24,7 @@ const HeaderStyle = styled.div`
     color: #ffff;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5rem;
+    padding: 0.5rem 5rem;
     position: fixed;
     top: 0;
     right: 0;
@@ -96,6 +96,19 @@ const HeaderStyle = styled.div`
     right: 0;
     height: 15rem;
     opacity: 0.32;
+  }
+
+  .glassCard {
+    position: absolute;
+    top: 20vh;
+    left: 31vw;
+    height: 7rem;
+    width: 16rem;
+  }
+
+  .glassCard:nth-child(2) {
+    top: 80vh;
+    left: 8vw;
   }
 `;
 

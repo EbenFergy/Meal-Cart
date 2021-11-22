@@ -3,6 +3,7 @@ import HeaderStyle from "./HeaderStyle";
 import CartImg from "../assets/cart-img.svg";
 import Button from "../Re-usables/Button";
 import leaves from "../assets/leaves.png";
+import GlassCard from "../Re-usables/GlassCard";
 
 const Header = () => {
   return (
@@ -16,7 +17,9 @@ const Header = () => {
       </nav>
 
       <div className="header-cont">
-        <img src={leaves} className='leaves' alt='leaves-img'/>
+        <GlassCard className="glassCard"></GlassCard>
+        <GlassCard className="glassCard"></GlassCard>
+        <img src={leaves} className="leaves" alt="leaves-img" />
         <div className="header-img">{/* <img src={headerImg} /> */}</div>
         <div className="header-txt">
           <div className="header-Desc">

@@ -4,18 +4,22 @@ export const transthisguy = keyframes`
 0%{
     transform: scale(1);
     opacity: 0;
+    width: 100%;
 
 }
 20%{
     opacity: 1;
+    
 
 }
 40% {
+  width: 105%;
 
 }
 100%{
     transform: scale(1.3);
     opacity: 1;
+    width: 110%;
 
 }
 `;
