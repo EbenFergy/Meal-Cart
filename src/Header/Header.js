@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import HeaderStyle from "./HeaderStyle";
 import CartImg from "../assets/cart-img.svg";
 import Button from "../Re-usables/Button";
 import leaves from "../assets/leaves.png";
 import GlassCard from "../Re-usables/GlassCard";
+import ReactDOM from "react-dom";
+import Cart from "../Cart/Cart";
 
 const Header = () => {
+  const [cartOpen, setCartOpen] = useState(false);
+
+  const viewCartHandler = () => {
+    setCartOpen(true);
+  };
+
   return (
     <HeaderStyle>
       <nav>
         <h2>MealCart</h2>
-        <Button className="button">
+        <Button className="button" onClick={viewCartHandler}>
           <img src={CartImg} alt="cart-img" /> <span>View Cart </span>
           <span className="orderno"> 3 </span>
         </Button>
@@ -28,6 +36,10 @@ const Header = () => {
           </div>
         </div>
       </div>
+
+      {cartOpen
+        ? ReactDOM.createPortal(<Cart />, document.getElementById("modal"))
+        : null}
     </HeaderStyle>
   );
 };

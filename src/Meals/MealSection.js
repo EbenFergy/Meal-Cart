@@ -20,7 +20,7 @@ const MealSection = ({ apiData }) => {
   const filtered = (country) => {
     return apiData.filter(({ recipe }) => recipe.cuisineType[0] === country);
   };
-  console.log("filterfnctn", filtered(CountryNames[2]));
+  //   console.log("filterfnctn", filtered(CountryNames[2]));
   return (
     <MealWrapperStyle>
       {filtered(CountryNames[0]).length > 0 && (

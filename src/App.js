@@ -17,7 +17,7 @@ const App = () => {
     getData();
   }, [url]);
 
-  console.log("apiData", apiData);
+  // console.log("apiData", apiData);
 
   return (
     <AppStyle>
