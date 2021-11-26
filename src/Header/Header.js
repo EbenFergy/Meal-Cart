@@ -5,14 +5,20 @@ import Button from "../Re-usables/Button";
 import leaves from "../assets/leaves.png";
 import GlassCard from "../Re-usables/GlassCard";
 import ReactDOM from "react-dom";
-import Cart from "../Cart/Cart";
+import { Cart, BackDropper } from "../Cart/Cart";
 
-const Header = () => {
+const Header = ({ itemObject }) => {
   const [cartOpen, setCartOpen] = useState(false);
 
   const viewCartHandler = () => {
     setCartOpen(true);
   };
+
+  const closeCart = () => {
+    setCartOpen(false);
+  };
+
+  console.log("itemObjectHeader", itemObject);
 
   return (
     <HeaderStyle>
@@ -38,7 +44,16 @@ const Header = () => {
       </div>
 
       {cartOpen
-        ? ReactDOM.createPortal(<Cart />, document.getElementById("modal"))
+        ? ReactDOM.createPortal(
+            <Cart closeCart={closeCart} />,
+            document.getElementById("modal")
+          )
+        : null}
+      {cartOpen
+        ? ReactDOM.createPortal(
+            <BackDropper closeCart={closeCart} />,
+            document.getElementById("backDrop")
+          )
         : null}
     </HeaderStyle>
   );

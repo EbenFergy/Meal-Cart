@@ -1,15 +1,35 @@
 import React from "react";
 import CartStyle from "./CartStyle";
-import { BackDrop } from "../Re-usables/Modal/ModalStyle";
+import { BackDrop, ModalStyle } from "../Re-usables/Modal/ModalStyle";
+import { useState } from "react/cjs/react.development";
 
-const Cart = () => {
+const DUMMY_LIST = [];
+
+export const BackDropper = ({ closeCart }) => {
+  return <BackDrop onClick={closeCart}></BackDrop>;
+};
+
+export const Cart = ({ closeCart, itemObject }) => {
+  const [cartList, setCartList] = useState(DUMMY_LIST);
+
+  // const newDUMMY_LIST = () => {
+  //   setCartList((prevCartList) => {
+  //     return [itemObject, ...prevCartList];
+  //   });
+  // };
+
+  // newDUMMY_LIST();
+
+  // console.log("itemObject", itemObject);
+
   return (
-    <BackDrop>
+    <ModalStyle>
       <CartStyle>
         <div className="header">Cart Items</div>
+        <div className=""></div>
       </CartStyle>
-    </BackDrop>
+    </ModalStyle>
   );
 };
 
-export default Cart;
+// export default Cart;

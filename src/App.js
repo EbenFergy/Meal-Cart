@@ -3,6 +3,7 @@ import Header from "./Header/Header";
 import AppStyle from "./AppStyle";
 import MealSection from "./Meals/MealSection";
 import Axios from "axios";
+import Try from "./Try";
 
 const App = () => {
   const [apiData, setApiData] = useState([]);
@@ -23,6 +24,7 @@ const App = () => {
     <AppStyle>
       <Header />
       <MealSection apiData={apiData} />
+      <Try />
     </AppStyle>
   );
 };

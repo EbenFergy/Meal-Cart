@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Button from "../Re-usables/Button";
 import InputStyle from "../Re-usables/InputStyle";
+import Header from "../Header/Header";
+import Try from "../Try";
 
 const MealCard = ({ calories, image, label }) => {
   const [quantity, setQuantity] = useState();
+  // const [mealD, setMealD] = useState({});
 
   const quantityHandler = (e) => {
     setQuantity(e.target.value);
@@ -21,7 +24,15 @@ const MealCard = ({ calories, image, label }) => {
       image: image,
       price: price,
     };
+    <Try label={mealDetails} />;
+
+    <Header itemObject={mealDetails} />;
+    // setMealD(mealDetails);
+    console.log("mealDetails", mealDetails);
   };
+
+  // console.log("mealD", mealD);
+
   return (
     <div key={calories} className="mainMeal">
       <div className="meal-cont">

@@ -15,7 +15,7 @@ const MealStyle = styled.div`
   padding: 1rem 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 40px 10px;
+
   justify-content: center;
   /* border: 2px solid; */
   margin: 0;
@@ -101,8 +101,14 @@ const MealStyle = styled.div`
     gap: 0.5rem;
     font-weight: 550;
     font-size: 0.9rem;
-    opacity: 0.8;
+    opacity: 0.9;
     /* border: 2px solid; */
+
+    p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   .meal-form {
