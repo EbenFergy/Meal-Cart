@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import HeaderStyle from "./HeaderStyle";
 import CartImg from "../assets/cart-img.svg";
 import Button from "../Re-usables/Button";
@@ -6,9 +6,6 @@ import leaves from "../assets/leaves.png";
 import GlassCard from "../Re-usables/GlassCard";
 import ReactDOM from "react-dom";
 import { Cart, BackDropper } from "../Cart/Cart";
-import mealContext from "../Contexts/mealContext";
-
-const DUMMY_LIST = [];
 
 const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);

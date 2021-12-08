@@ -3,7 +3,6 @@ import mealContext from "../Contexts/mealContext";
 import Button from "../Re-usables/Button";
 import InputStyle from "../Re-usables/InputStyle";
 import _ from "lodash";
-import { v4 as uuidv4 } from "uuid";
 
 const MealCard = ({ calories, image, label, id }) => {
   const [quantity, setQuantity] = useState(1);
