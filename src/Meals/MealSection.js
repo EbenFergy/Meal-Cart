@@ -33,6 +33,7 @@ const MealSection = ({ apiData }) => {
                   calories={recipe.calories}
                   image={recipe.image}
                   label={recipe.label}
+                  id={recipe.uri}
                 />
               );
             })}
@@ -50,6 +51,7 @@ const MealSection = ({ apiData }) => {
                   calories={recipe.calories}
                   image={recipe.image}
                   label={recipe.label}
+                  id={recipe.uri}
                 />
               );
             })}
@@ -67,6 +69,7 @@ const MealSection = ({ apiData }) => {
                   calories={recipe.calories}
                   image={recipe.image}
                   label={recipe.label}
+                  id={recipe.uri}
                 />
               );
             })}
@@ -84,6 +87,7 @@ const MealSection = ({ apiData }) => {
                   calories={recipe.calories}
                   image={recipe.image}
                   label={recipe.label}
+                  id={recipe.uri}
                 />
               );
             })}
@@ -101,6 +105,7 @@ const MealSection = ({ apiData }) => {
                   calories={recipe.calories}
                   image={recipe.image}
                   label={recipe.label}
+                  id={recipe.uri}
                 />
               );
             })}
@@ -118,6 +123,7 @@ const MealSection = ({ apiData }) => {
                   calories={recipe.calories}
                   image={recipe.image}
                   label={recipe.label}
+                  id={recipe.uri}
                 />
               );
             })}
@@ -135,6 +141,7 @@ const MealSection = ({ apiData }) => {
                   calories={recipe.calories}
                   image={recipe.image}
                   label={recipe.label}
+                  id={recipe.uri}
                 />
               );
             })}
@@ -152,6 +159,7 @@ const MealSection = ({ apiData }) => {
                   calories={recipe.calories}
                   image={recipe.image}
                   label={recipe.label}
+                  id={recipe.uri}
                 />
               );
             })}
@@ -169,6 +177,7 @@ const MealSection = ({ apiData }) => {
                   calories={recipe.calories}
                   image={recipe.image}
                   label={recipe.label}
+                  id={recipe.uri}
                 />
               );
             })}
@@ -186,6 +195,7 @@ const MealSection = ({ apiData }) => {
                   calories={recipe.calories}
                   image={recipe.image}
                   label={recipe.label}
+                  id={recipe.uri}
                 />
               );
             })}
@@ -203,6 +213,7 @@ const MealSection = ({ apiData }) => {
                   calories={recipe.calories}
                   image={recipe.image}
                   label={recipe.label}
+                  id={recipe.uri}
                 />
               );
             })}

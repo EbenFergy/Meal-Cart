@@ -3,8 +3,9 @@ import mealContext from "../Contexts/mealContext";
 import Button from "../Re-usables/Button";
 import InputStyle from "../Re-usables/InputStyle";
 import _ from "lodash";
+import { v4 as uuidv4 } from "uuid";
 
-const MealCard = ({ calories, image, label }) => {
+const MealCard = ({ calories, image, label, id }) => {
   const [quantity, setQuantity] = useState(1);
 
   const { cartList, setCartList } = useContext(mealContext);
@@ -24,25 +25,32 @@ const MealCard = ({ calories, image, label }) => {
       name: label,
       image: image,
       price: price,
+      id: id,
     };
+
+    console.log("ID", mealDetails.id);
 
     const mealDetailsLength = Object.keys(mealDetails).length;
 
-    const mealDetailsNoQuant = () => {
-      const newMealDetails = { ...mealDetails };
-      delete newMealDetails.quantity;
-      return newMealDetails;
-    };
+    const similarItemHandler = cartList.find((items) => {
+      return mealDetails.id === items.id;
+    });
 
-    const similarItemHandler = _.some(cartList, mealDetailsNoQuant());
+    const similarItemHandlerLength = _.size(similarItemHandler);
+    console.log("length", similarItemHandlerLength);
 
-    if (mealDetailsLength > 0 && similarItemHandler === false) {
+    // console.log(similarItemHandler);
+    if (mealDetailsLength > 0 && similarItemHandlerLength === 0) {
       setCartList((prevCartList) => {
         return [mealDetails, ...prevCartList];
       });
-    } else if (similarItemHandler === true) {
-      alert("item already in cart");
+    } else if (similarItemHandlerLength > 0) {
+      console.log("similarItem", similarItemHandler.quantity);
+      console.log("mealdDetailsQuant", mealDetails.quantity);
+      similarItemHandler.quantity = mealDetails.quantity;
     }
+
+    // console.log(cartList);
   };
 
   return (

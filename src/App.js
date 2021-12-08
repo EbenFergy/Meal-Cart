@@ -21,6 +21,7 @@ const App = () => {
   }, [url]);
 
   // console.log("Appmeals", meal);
+  // console.log("apidata", apiData);
 
   return (
     <AppStyle>
