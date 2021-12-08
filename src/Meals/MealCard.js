@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import mealContext from "../Contexts/mealContext";
 import Button from "../Re-usables/Button";
 import InputStyle from "../Re-usables/InputStyle";
-import Header from "../Header/Header";
-import Try from "../Try";
+import _ from "lodash";
 
 const MealCard = ({ calories, image, label }) => {
-  const [quantity, setQuantity] = useState();
-  // const [mealD, setMealD] = useState({});
+  const [quantity, setQuantity] = useState(1);
+
+  const { cartList, setCartList } = useContext(mealContext);
 
   const quantityHandler = (e) => {
     setQuantity(e.target.value);
@@ -24,14 +25,25 @@ const MealCard = ({ calories, image, label }) => {
       image: image,
       price: price,
     };
-    <Try label={mealDetails} />;
 
-    <Header itemObject={mealDetails} />;
-    // setMealD(mealDetails);
-    console.log("mealDetails", mealDetails);
+    const mealDetailsLength = Object.keys(mealDetails).length;
+
+    const mealDetailsNoQuant = () => {
+      const newMealDetails = { ...mealDetails };
+      delete newMealDetails.quantity;
+      return newMealDetails;
+    };
+
+    const similarItemHandler = _.some(cartList, mealDetailsNoQuant());
+
+    if (mealDetailsLength > 0 && similarItemHandler === false) {
+      setCartList((prevCartList) => {
+        return [mealDetails, ...prevCartList];
+      });
+    } else if (similarItemHandler === true) {
+      alert("item already in cart");
+    }
   };
-
-  // console.log("mealD", mealD);
 
   return (
     <div key={calories} className="mainMeal">

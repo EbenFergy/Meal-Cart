@@ -9,9 +9,10 @@ const CartStyle = styled.div`
   height: 80vh;
   width: 60vw;
   border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+  overflow: scroll;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
   justify-content: center;
 
   .header {
@@ -19,7 +20,7 @@ const CartStyle = styled.div`
     height: 16%;
     background-color: #ff7300;
     /* border: 2px solid; */
-    align-self: flex-start;
+    top: 0;
     padding: 3rem 0;
     display: flex;
     align-items: center;
@@ -27,6 +28,24 @@ const CartStyle = styled.div`
     font-size: 2rem;
     font-weight: 400;
     color: #ffff;
+  }
+
+  .cartitems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    /* border: 2px solid red; */
+    margin-top: 5rem;
+
+    .eachItem {
+      display: flex;
+      gap: 1rem;
+
+      img {
+        width: 10rem;
+      }
+    }
   }
 `;
 

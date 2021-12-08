@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import HeaderStyle from "./HeaderStyle";
 import CartImg from "../assets/cart-img.svg";
 import Button from "../Re-usables/Button";
@@ -6,19 +6,33 @@ import leaves from "../assets/leaves.png";
 import GlassCard from "../Re-usables/GlassCard";
 import ReactDOM from "react-dom";
 import { Cart, BackDropper } from "../Cart/Cart";
+import mealContext from "../Contexts/mealContext";
 
-const Header = ({ itemObject }) => {
+const DUMMY_LIST = [];
+
+const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
+  // const [cartList, setCartList] = useState([]);
+
+  // const mealDLength = Object.keys(mealD).length;
 
   const viewCartHandler = () => {
     setCartOpen(true);
+
+    // if (mealDLength > 0) {
+    //   setCartList((prevCartList) => {
+    //     return [mealD, ...prevCartList];
+    //   });
+    // }
+
+    // setMealD("");
   };
 
   const closeCart = () => {
     setCartOpen(false);
   };
 
-  console.log("itemObjectHeader", itemObject);
+  // console.log("HeaderCartList", cartList);
 
   return (
     <HeaderStyle>
