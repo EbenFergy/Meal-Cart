@@ -30,10 +30,12 @@ const MealCard = ({ calories, image, label, id }) => {
     console.log("ID", mealDetails.id);
 
     const mealDetailsLength = Object.keys(mealDetails).length;
+    console.log("mealDetailsLength", mealDetailsLength);
 
     const similarItemHandler = cartList.find((items) => {
       return mealDetails.id === items.id;
     });
+    console.log("finderrr", similarItemHandler);
 
     const similarItemHandlerLength = _.size(similarItemHandler);
     console.log("length", similarItemHandlerLength);
@@ -49,6 +51,7 @@ const MealCard = ({ calories, image, label, id }) => {
       similarItemHandler.quantity = mealDetails.quantity;
     }
 
+    
     // console.log(cartList);
   };
 

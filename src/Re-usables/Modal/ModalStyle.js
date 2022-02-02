@@ -13,7 +13,7 @@ export const ModalStyle = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 100;
-  /* border: 5px solid; */
+  /* border: 5px solid yellow; */
 `;
 
 export const BackDrop = styled.div`

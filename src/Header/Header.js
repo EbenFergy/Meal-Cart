@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import HeaderStyle from "./HeaderStyle";
 import CartImg from "../assets/cart-img.svg";
 import Button from "../Re-usables/Button";
@@ -6,30 +6,22 @@ import leaves from "../assets/leaves.png";
 import GlassCard from "../Re-usables/GlassCard";
 import ReactDOM from "react-dom";
 import { Cart, BackDropper } from "../Cart/Cart";
+import mealContext from "../Contexts/mealContext";
 
 const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
-  // const [cartList, setCartList] = useState([]);
 
-  // const mealDLength = Object.keys(mealD).length;
-
+  const {cartList} = useContext(mealContext);
+  
   const viewCartHandler = () => {
     setCartOpen(true);
-
-    // if (mealDLength > 0) {
-    //   setCartList((prevCartList) => {
-    //     return [mealD, ...prevCartList];
-    //   });
-    // }
-
-    // setMealD("");
   };
 
   const closeCart = () => {
     setCartOpen(false);
   };
 
-  // console.log("HeaderCartList", cartList);
+  let cartListLength = cartList.length
 
   return (
     <HeaderStyle>
@@ -37,7 +29,7 @@ const Header = () => {
         <h2>MealCart</h2>
         <Button className="button" onClick={viewCartHandler}>
           <img src={CartImg} alt="cart-img" /> <span>View Cart </span>
-          <span className="orderno"> 3 </span>
+          <span className="orderno"> {cartListLength} </span>
         </Button>
       </nav>
 

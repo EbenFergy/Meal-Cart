@@ -9,7 +9,7 @@ const CartStyle = styled.div`
   height: 80vh;
   width: 60vw;
   border-radius: 10px;
-  overflow: scroll;
+  overflow: hidden;
   /* display: flex;
   flex-direction: column;
   align-items: center; */
@@ -20,7 +20,8 @@ const CartStyle = styled.div`
     height: 16%;
     background-color: #ff7300;
     /* border: 2px solid; */
-    top: 0;
+    /* position: relative; */
+    /* top: 0; */
     padding: 3rem 0;
     display: flex;
     align-items: center;
@@ -36,7 +37,11 @@ const CartStyle = styled.div`
     align-items: center;
     gap: 2rem;
     /* border: 2px solid red; */
-    margin-top: 5rem;
+    height: 84%;
+    padding-top: 2rem;
+    /* margin-top: 5rem; */
+    /* scroll-behavior: smooth; */
+    overflow-y: auto;
 
     .eachItem {
       display: flex;
