@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const MealWrapperStyle = styled.div`
   width: 100%;
+  /* border: 2px solid green; */
 
   .countryNames {
     margin: 5rem 2rem 0 2rem;
@@ -10,6 +11,7 @@ const MealWrapperStyle = styled.div`
     font-weight: 600;
     opacity: 0.7;
     cursor: pointer;
+    max-width: fit-content;
 
     :hover {
       opacity: 0.9;

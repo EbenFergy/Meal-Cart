@@ -27,7 +27,7 @@ const CartStyle = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    font-weight: 400;
+    font-weight: 700;
     color: #ffff;
   }
 
@@ -35,7 +35,7 @@ const CartStyle = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
     /* border: 2px solid red; */
     height: 84%;
     padding-top: 2rem;
@@ -45,10 +45,27 @@ const CartStyle = styled.div`
 
     .eachItem {
       display: flex;
-      gap: 1rem;
+      justify-content: space-around;
+      align-items: center;
+      /* gap: 1rem; */
+      /* background-color: rgba(220, 220, 220, 1); */
+      width: 80%;
+      padding: 1rem 3rem;
+      border-bottom: 1px solid rgba(210, 210, 210, 1);
+
+      div {
+        width: 20%;
+        /* border: 2px solid red;  */
+        text-align: center;
+      }
 
       img {
-        width: 10rem;
+        width: 8rem;
+        border-radius: 50%;
+      }
+
+      .itemName {
+        text-align: left;
       }
     }
   }

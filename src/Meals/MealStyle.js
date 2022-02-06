@@ -17,9 +17,10 @@ const MealStyle = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 40px 10px;
   justify-content: center;
-  /* border: 2px solid; */
+  /* border: 2px solid yellow;*/
   margin: 0;
-  /* width: 100vw; */
+  max-width: 100vw;
+  box-sizing: border-box;
 
   .meal-cont {
     height: 250px;
@@ -50,24 +51,28 @@ const MealStyle = styled.div`
     left: 0;
     height: 300px;
     width: 100%;
+    padding: 0.2rem 0.2rem;
+
     height: fit-content;
     border-radius: 10px;
     background: rgba(14, 17, 26, 1);
-    /* border: 2px solid red; */
+    border: 1px solid rgba(37, 46, 90, 1);
     opacity: 0;
     overflow: hidden;
     box-shadow: 0px 0px 6px 2px rgba(5, 8, 17, 1);
+    object-fit: contain;
   }
 
   .mainMeal {
     position: relative;
+    /* border: 2px solid green; */
   }
 
   .mainMeal:hover .innerMeal {
     display: block;
     animation: ${transthisguy} 0.4s ease-in forwards;
     position: absolute;
-    width: 110%;
+    /* width: 90%; */
 
     .meal-cont {
       border-radius: 10px 10px 0 0;

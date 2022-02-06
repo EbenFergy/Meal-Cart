@@ -20,8 +20,8 @@ export const Cart = ({ closeCart }) => {
                 <div>
                   <img src={item.image} alt={item.name} />
                 </div>
-                <div>{item.name}</div>
-                <div>{item.price}</div>
+                <div className="itemName">{item.name}</div>
+                <div>${item.price}</div>
                 <div>{item.quantity}</div>
               </div>
             );

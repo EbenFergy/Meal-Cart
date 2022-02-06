@@ -23,7 +23,29 @@ const MealSection = ({ apiData }) => {
   //   console.log("filterfnctn", filtered(CountryNames[2]));
   return (
     <MealWrapperStyle>
-      {filtered(CountryNames[0]).length > 0 && (
+      {CountryNames.map((eachCountry) => {
+        return (
+          filtered(eachCountry).length > 0 && (
+            <>
+              <div className="countryNames">{eachCountry}</div>
+              <MealStyle>
+                {filtered(eachCountry).map(({ recipe }) => {
+                  return (
+                    <MealCard
+                      calories={recipe.calories}
+                      image={recipe.image}
+                      label={recipe.label}
+                      id={recipe.uri}
+                    />
+                  );
+                })}
+              </MealStyle>
+            </>
+          )
+        );
+      })}
+
+      {/* {filtered(CountryNames[0]).length > 0 && (
         <>
           <div className="countryNames">{CountryNames[0]}</div>
           <MealStyle>
@@ -219,7 +241,7 @@ const MealSection = ({ apiData }) => {
             })}
           </MealStyle>
         </>
-      )}
+      )} */}
     </MealWrapperStyle>
   );
 };

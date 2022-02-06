@@ -17,9 +17,9 @@ export const transthisguy = keyframes`
 
 }
 100%{
-    transform: scale(1.3);
+    transform: scale(1.1);
     opacity: 1;
-    width: 110%;
+    width: 120%;
 
 }
 `;
