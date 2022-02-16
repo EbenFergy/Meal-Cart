@@ -14,11 +14,12 @@ const CartStyle = styled.div`
   flex-direction: column;
   align-items: center; */
   justify-content: center;
+  /* border: 2px solid red; */
 
   .header {
     width: 100%;
-    height: 16%;
-    background-color: #ff7300;
+    height: 12%;
+    background-color: rgba(37, 46, 70, 1);
     /* border: 2px solid; */
     /* position: relative; */
     /* top: 0; */
@@ -31,13 +32,27 @@ const CartStyle = styled.div`
     color: #ffff;
   }
 
+  .footer {
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+    /* height: 12%; */
+    justify-content: flex-end;
+    padding-right: 2rem;
+    gap: 1rem;
+  }
+
+  .closeBtn {
+    background-color: rgba(37, 46, 70, 1);
+  }
+
   .cartitems {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     /* border: 2px solid red; */
-    height: 84%;
+    height: 76%;
     padding-top: 2rem;
     /* margin-top: 5rem; */
     /* scroll-behavior: smooth; */
@@ -57,6 +72,10 @@ const CartStyle = styled.div`
         width: 20%;
         /* border: 2px solid red;  */
         text-align: center;
+      }
+
+      .image {
+        /* border: 2px solid red; */
       }
 
       img {

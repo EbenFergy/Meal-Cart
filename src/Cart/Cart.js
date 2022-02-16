@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import CartStyle from "./CartStyle";
 import { BackDrop, ModalStyle } from "../Re-usables/Modal/ModalStyle";
 import mealContext from "../Contexts/mealContext";
+import Button from "../Re-usables/Button";
 
 export const BackDropper = ({ closeCart }) => {
   return <BackDrop onClick={closeCart}></BackDrop>;
@@ -17,7 +18,7 @@ export const Cart = ({ closeCart }) => {
           {cartList.map((item) => {
             return (
               <div className="eachItem">
-                <div>
+                <div className="image">
                   <img src={item.image} alt={item.name} />
                 </div>
                 <div className="itemName">{item.name}</div>
@@ -26,6 +27,10 @@ export const Cart = ({ closeCart }) => {
               </div>
             );
           })}
+        </div>
+        <div className="footer">
+          <Button >Proceed to Pay</Button>
+          <Button onClick={closeCart} className="closeBtn">Close</Button>
         </div>
       </CartStyle>
     </ModalStyle>

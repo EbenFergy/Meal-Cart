@@ -5,6 +5,7 @@ import MealWrapperStyle from "./MealWrapperStyle";
 
 const MealSection = ({ apiData }) => {
   const CountryNames = [
+    "african",
     "american",
     "asian",
     "british",
