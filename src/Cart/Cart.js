@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import CartStyle from "./CartStyle";
 import { BackDrop, ModalStyle } from "../Re-usables/Modal/ModalStyle";
-import mealContext from "../Contexts/mealContext";
+import mealContext from "../Contexts/meal-Context";
 import Button from "../Re-usables/Button";
 
 export const BackDropper = ({ closeCart }) => {
@@ -29,7 +29,7 @@ export const Cart = ({ closeCart }) => {
           })}
         </div>
         <div className="footer">
-          <Button >Proceed to Pay</Button>
+          <Button className="payBtn">Proceed to Pay</Button>
           <Button onClick={closeCart} className="closeBtn">Close</Button>
         </div>
       </CartStyle>

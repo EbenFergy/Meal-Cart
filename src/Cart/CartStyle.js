@@ -42,6 +42,10 @@ const CartStyle = styled.div`
     gap: 1rem;
   }
 
+  .payBtn{
+    background-color:#FF0000 ;
+  }
+
   .closeBtn {
     background-color: rgba(37, 46, 70, 1);
   }

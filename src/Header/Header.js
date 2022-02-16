@@ -6,7 +6,7 @@ import leaves from "../assets/leaves.png";
 import GlassCard from "../Re-usables/GlassCard";
 import ReactDOM from "react-dom";
 import { Cart, BackDropper } from "../Cart/Cart";
-import mealContext from "../Contexts/mealContext";
+import mealContext from "../Contexts/meal-Context";
 
 const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
