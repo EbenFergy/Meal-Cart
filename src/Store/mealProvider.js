@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import mealContext from "./meal-Context";
 import _ from "lodash";
 
-
 const MealProvider = (props) => {
   const [cartList, setCartList] = useState([]);
 
   const addToCartList = (mealDetails) => {
+    console.log("before mealDetailsQuantity", typeof mealDetails.quantity);
     //Check if there's a similar entry in the cartList
     const similarItemHandler = cartList.find((items) => {
       return mealDetails.id === items.id;
@@ -22,14 +22,17 @@ const MealProvider = (props) => {
         return [mealDetails, ...prevCartList];
       });
     } else if (similarItemHandlerLength > 0) {
-      similarItemHandler.quantity = mealDetails.quantity;
+      console.log("similarItemHandler", typeof similarItemHandler.quantity);
+      console.log("mealDetailsQuantity", typeof mealDetails.quantity);
+      similarItemHandler.quantity += mealDetails.quantity;
     }
-  };
 
+    console.log("after mealDetailsQuantity", typeof mealDetails.quantity);
+  };
 
   const mealContextValues = {
     addToCartList: addToCartList,
-    cartList: cartList
+    cartList: cartList,
   };
 
   return (

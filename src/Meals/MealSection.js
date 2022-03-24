@@ -27,12 +27,13 @@ const MealSection = ({ apiData }) => {
       {CountryNames.map((eachCountry) => {
         return (
           filtered(eachCountry).length > 0 && (
-            <>
+            <div key={eachCountry}>
               <div className="countryNames">{eachCountry}</div>
               <MealStyle>
                 {filtered(eachCountry).map(({ recipe }) => {
                   return (
                     <MealCard
+                      key={recipe.uri}
                       calories={recipe.calories}
                       image={recipe.image}
                       label={recipe.label}
@@ -41,12 +42,10 @@ const MealSection = ({ apiData }) => {
                   );
                 })}
               </MealStyle>
-            </>
+            </div>
           )
         );
       })}
-
-      
     </MealWrapperStyle>
   );
 };

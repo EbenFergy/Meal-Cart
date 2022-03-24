@@ -9,7 +9,7 @@ const MealCard = ({ calories, image, label, id }) => {
   const { addToCartList } = useContext(mealContext);
 
   const quantityHandler = (e) => {
-    setQuantity(e.target.value);
+    setQuantity(parseInt(e.target.value));
   };
 
   const price = (calories / 98).toFixed(2);
@@ -25,6 +25,8 @@ const MealCard = ({ calories, image, label, id }) => {
       price: price,
       id: id,
     };
+
+    console.log("cartSection mealDetailsQuantity", typeof mealDetails.quantity);
 
     console.log("ID", mealDetails.id);
 
