@@ -11,8 +11,8 @@ import mealContext from "../Store/meal-Context";
 const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
 
-  const {cartList} = useContext(mealContext);
-  
+  const { cartList } = useContext(mealContext);
+
   const viewCartHandler = () => {
     setCartOpen(true);
   };
@@ -21,7 +21,7 @@ const Header = () => {
     setCartOpen(false);
   };
 
-  let cartListLength = cartList.length
+  let cartListLength = cartList.length;
 
   return (
     <HeaderStyle>

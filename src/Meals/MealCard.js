@@ -2,12 +2,11 @@ import React, { useState, useContext } from "react";
 import mealContext from "../Store/meal-Context";
 import Button from "../Re-usables/Button";
 import InputStyle from "../Re-usables/InputStyle";
-import _ from "lodash";
 
 const MealCard = ({ calories, image, label, id }) => {
   const [quantity, setQuantity] = useState(1);
 
-  const { cartList, setCartList } = useContext(mealContext);
+  const { addToCartList } = useContext(mealContext);
 
   const quantityHandler = (e) => {
     setQuantity(e.target.value);
@@ -29,30 +28,13 @@ const MealCard = ({ calories, image, label, id }) => {
 
     console.log("ID", mealDetails.id);
 
+// confirm that an entry was made
     const mealDetailsLength = Object.keys(mealDetails).length;
     console.log("mealDetailsLength", mealDetailsLength);
 
-    const similarItemHandler = cartList.find((items) => {
-      return mealDetails.id === items.id;
-    });
-    console.log("finderrr", similarItemHandler);
+    // if an entry was made, send that entry to the cart context handler component
+    mealDetailsLength > 0 && addToCartList(mealDetails);
 
-    const similarItemHandlerLength = _.size(similarItemHandler);
-    console.log("length", similarItemHandlerLength);
-
-    // console.log(similarItemHandler);
-    if (mealDetailsLength > 0 && similarItemHandlerLength === 0) {
-      setCartList((prevCartList) => {
-        return [mealDetails, ...prevCartList];
-      });
-    } else if (similarItemHandlerLength > 0) {
-      console.log("similarItem", similarItemHandler.quantity);
-      console.log("mealdDetailsQuant", mealDetails.quantity);
-      similarItemHandler.quantity = mealDetails.quantity;
-    }
-
-    
-    // console.log(cartList);
   };
 
   return (
