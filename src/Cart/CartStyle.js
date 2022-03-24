@@ -32,6 +32,26 @@ const CartStyle = styled.div`
     color: #ffff;
   }
 
+  .emptyCartDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 2px solid red; */
+    height: 100%;
+
+    img {
+      height: 65%;
+    }
+
+    h2 {
+      color: rgba(40, 40, 40);
+    }
+
+    div {
+      color: rgba(80, 80, 80);
+    }
+  }
+
   .footer {
     /* border: 2px solid red; */
     display: flex;
@@ -42,8 +62,8 @@ const CartStyle = styled.div`
     gap: 1rem;
   }
 
-  .payBtn{
-    background-color:#FF0000 ;
+  .payBtn {
+    background-color: #ff0000;
   }
 
   .closeBtn {

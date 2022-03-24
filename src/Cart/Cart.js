@@ -4,6 +4,7 @@ import { BackDrop, ModalStyle } from "../Re-usables/Modal/ModalStyle";
 import mealContext from "../Store/meal-Context";
 import Button from "../Re-usables/Button";
 import _ from "lodash";
+import emptycart from "../assets/empty-cart.gif";
 
 export const BackDropper = ({ closeCart }) => {
   return <BackDrop onClick={closeCart}></BackDrop>;
@@ -14,11 +15,11 @@ export const Cart = ({ closeCart }) => {
   const cartListLength = _.size(cartList);
   return (
     <ModalStyle>
-      
-        <CartStyle>
-          <div className="header">Cart Items</div>
-          <div className="cartitems">
-            {cartListLength > 0 ? cartList.map((item) => {
+      <CartStyle>
+        <div className="header">Cart Items</div>
+        <div className="cartitems">
+          {cartListLength > 0 ? (
+            cartList.map((item) => {
               return (
                 <div key={item.price} className="eachItem">
                   <div className="image">
@@ -29,16 +30,24 @@ export const Cart = ({ closeCart }) => {
                   <div>{item.quantity}</div>
                 </div>
               );
-            }) : <img src="https://lottiefiles.com/share/oiiaebfd" alt="empty-cart" /> }
-          </div>
-          <div className="footer">
-            {cartListLength > 0 &&<Button className="payBtn">Proceed to Pay</Button>}
-            <Button onClick={closeCart} className="closeBtn">
-              Close
-            </Button>
-          </div>
-        </CartStyle>
-      
+            })
+          ) : (
+            <div className="emptyCartDisplay">
+              <img src={emptycart} alt="empty-cart" className="emptyCart" />
+              <h2>Cart is empty</h2>
+              <div>Looks like you haven't made a choice yet...</div>
+            </div>
+          )}
+        </div>
+        <div className="footer">
+          {cartListLength > 0 && (
+            <Button className="payBtn">Proceed to Pay</Button>
+          )}
+          <Button onClick={closeCart} className="closeBtn">
+            Close
+          </Button>
+        </div>
+      </CartStyle>
     </ModalStyle>
   );
 };
