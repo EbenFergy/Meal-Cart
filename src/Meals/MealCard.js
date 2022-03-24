@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import mealContext from "../Contexts/meal-Context";
+import mealContext from "../Store/meal-Context";
 import Button from "../Re-usables/Button";
 import InputStyle from "../Re-usables/InputStyle";
 import _ from "lodash";

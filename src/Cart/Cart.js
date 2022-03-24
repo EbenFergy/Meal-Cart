@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import CartStyle from "./CartStyle";
 import { BackDrop, ModalStyle } from "../Re-usables/Modal/ModalStyle";
-import mealContext from "../Contexts/meal-Context";
+import mealContext from "../Store/meal-Context";
 import Button from "../Re-usables/Button";
 
 export const BackDropper = ({ closeCart }) => {

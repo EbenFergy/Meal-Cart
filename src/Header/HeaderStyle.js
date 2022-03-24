@@ -12,6 +12,7 @@ const HeaderStyle = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  /* position: fixed; */
 
   nav {
     display: flex;
