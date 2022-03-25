@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import CartStyle from "./CartStyle";
-import { BackDrop, ModalStyle } from "../Re-usables/Modal/ModalStyle";
-import mealContext from "../Store/meal-Context";
-import Button from "../Re-usables/Button";
+import { BackDrop, ModalStyle } from "../ReUsables/Modal/ModalStyle";
+import mealContext from "../../Store/meal-Context";
+import Button from "../ReUsables/Button";
 import _ from "lodash";
-import emptycart from "../assets/empty-cart.gif";
+import emptycart from "../../assets/empty-cart2.gif";
+import CartCounter from "../CartCounter/cartCounter";
 
 export const BackDropper = ({ closeCart }) => {
   return <BackDrop onClick={closeCart}></BackDrop>;
@@ -16,7 +17,7 @@ export const Cart = ({ closeCart }) => {
   return (
     <ModalStyle>
       <CartStyle>
-        <div className="header">Cart Items</div>
+        <div className="header">Cart Itemssd</div>
         <div className="cartitems">
           {cartListLength > 0 ? (
             cartList.map((item) => {
@@ -27,7 +28,7 @@ export const Cart = ({ closeCart }) => {
                   </div>
                   <div className="itemName">{item.name}</div>
                   <div>${item.price}</div>
-                  <div>{item.quantity}</div>
+                  <div>{/* {item.quantity} */}saasds</div>
                 </div>
               );
             })
@@ -35,7 +36,7 @@ export const Cart = ({ closeCart }) => {
             <div className="emptyCartDisplay">
               <img src={emptycart} alt="empty-cart" className="emptyCart" />
               <h2>Cart is empty</h2>
-              <div>Looks like you haven't made a choice yet...</div>
+              <div>Looks like you haven't made a selection yet...</div>
             </div>
           )}
         </div>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import headerImg from "../assets/header-img.png";
+import headerImg from "../../assets/header-img.png";
 
 const HeaderStyle = styled.div`
   width: 100%;

@@ -4,7 +4,7 @@ import {
   IncreaseHeight,
   slideUp,
   zoomIn,
-} from "../animation/animation";
+} from "../../animation/animation";
 
 const MealStyle = styled.div`
   * {

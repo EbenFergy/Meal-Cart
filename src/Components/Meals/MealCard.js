@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import mealContext from "../Store/meal-Context";
-import Button from "../Re-usables/Button";
-import InputStyle from "../Re-usables/InputStyle";
+import mealContext from "../../Store/meal-Context";
+import Button from "../ReUsables/Button";
+import InputStyle from "../ReUsables/InputStyle";
 
 const MealCard = ({ calories, image, label, id }) => {
   const [quantity, setQuantity] = useState(1);
@@ -30,13 +30,12 @@ const MealCard = ({ calories, image, label, id }) => {
 
     console.log("ID", mealDetails.id);
 
-// confirm that an entry was made
+    // confirm that an entry was made
     const mealDetailsLength = Object.keys(mealDetails).length;
     console.log("mealDetailsLength", mealDetailsLength);
 
     // if an entry was made, send that entry to the cart context handler component
     mealDetailsLength > 0 && addToCartList(mealDetails);
-
   };
 
   return (

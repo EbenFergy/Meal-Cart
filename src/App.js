@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./Header/Header";
+import Header from "./Components/Header/Header";
 import AppStyle from "./AppStyle";
-import MealSection from "./Meals/MealSection";
+import MealSection from "./Components/Meals/MealSection";
 import MealProvider from "./Store/mealProvider";
 import RecipeApi from "./api/RecipeApi";
 
@@ -12,6 +12,7 @@ const App = () => {
 
   return (
     <AppStyle>
+      <div className="noView">No view for smaller screens yet...</div>
       <MealProvider>
         <Header />
         <MealSection apiData={RecipeApi()} />
