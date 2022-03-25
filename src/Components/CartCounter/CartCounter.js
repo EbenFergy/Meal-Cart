@@ -4,15 +4,23 @@ import CartCounterStyle from "./CartCounterStyle";
 import mealContext from "../../Store/meal-Context";
 
 const CartCounter = ({ id, quantity }) => {
-  //   const [counterValue, setCounterValue] = useState(quantity);
+  const [counterValue, setCounterValue] = useState(quantity);
 
-  const { cartList } = useContext(mealContext);
-  const decrement = () => {};
-  const increment = () => {};
+  const { cartList, addQuantity, reduceQuantity } = useContext(mealContext);
+  const decrement = () => {
+    
+    setCounterValue(reduceQuantity(id));
+  };
+
+  const increment = () => {
+    
+    setCounterValue(addQuantity(id));
+  };
+
   return (
     <CartCounterStyle>
       <Button onClick={decrement}>-</Button>
-      <div className="counterValue"> {quantity} </div>
+      <div className="counterValue"> {counterValue} </div>
       <Button onClick={increment}>+</Button>
     </CartCounterStyle>
   );

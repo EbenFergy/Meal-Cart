@@ -5,17 +5,15 @@ import _ from "lodash";
 const MealProvider = (props) => {
   const [cartList, setCartList] = useState([]);
 
-  const cartListFinder =(id)=>{
+  const cartListFinder = (id) => {
     return cartList.find((items) => {
       return id === items.id;
     });
-
-  }
+  };
 
   const addToCartList = (mealDetails) => {
     //Check if there's a similar entry in the cartList
     const similarItemHandler = cartListFinder(mealDetails.id);
-    
 
     //Check if the similarItemHandler has an entry by checking it's length with loadash
     const similarItemHandlerLength = _.size(similarItemHandler);
@@ -31,15 +29,23 @@ const MealProvider = (props) => {
     }
   };
 
-  const addQuantity=(id, quantity)=>{
-  
+  const addQuantity = (id) => {
+    const item = cartListFinder(id);
+    item.quantity += 1;
+    return item.quantity;
+  };
 
-  }
+  const reduceQuantity = (id) => {
+    const item = cartListFinder(id);
+    item.quantity -= 1;
+    return item.quantity;
+  };
 
   const mealContextValues = {
     addToCartList: addToCartList,
     cartList: cartList,
     addQuantity: addQuantity,
+    reduceQuantity: reduceQuantity,
   };
 
   return (
