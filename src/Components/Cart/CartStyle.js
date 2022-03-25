@@ -15,6 +15,7 @@ const CartStyle = styled.div`
   align-items: center; */
   justify-content: center;
   /* border: 2px solid red; */
+  
 
   .header {
     width: 100%;
@@ -63,11 +64,13 @@ const CartStyle = styled.div`
   }
 
   .payBtn {
-    background-color: #ff0000;
+    /* background-color: #ff0000; */
+    background-color: rgb(25,166,100);
   }
 
   .closeBtn {
     background-color: rgba(37, 46, 70, 1);
+    /* background-color: #ff0000; */
   }
 
   .cartitems {

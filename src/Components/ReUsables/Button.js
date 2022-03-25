@@ -10,6 +10,10 @@ const Button = styled.button`
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
+
+  :active {
+    opacity: 0.5;
+  }
 `;
 
 export default Button;

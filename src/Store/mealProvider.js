@@ -5,12 +5,17 @@ import _ from "lodash";
 const MealProvider = (props) => {
   const [cartList, setCartList] = useState([]);
 
-  const addToCartList = (mealDetails) => {
-    console.log("before mealDetailsQuantity", typeof mealDetails.quantity);
-    //Check if there's a similar entry in the cartList
-    const similarItemHandler = cartList.find((items) => {
-      return mealDetails.id === items.id;
+  const cartListFinder =(id)=>{
+    return cartList.find((items) => {
+      return id === items.id;
     });
+
+  }
+
+  const addToCartList = (mealDetails) => {
+    //Check if there's a similar entry in the cartList
+    const similarItemHandler = cartListFinder(mealDetails.id);
+    
 
     //Check if the similarItemHandler has an entry by checking it's length with loadash
     const similarItemHandlerLength = _.size(similarItemHandler);
@@ -22,17 +27,19 @@ const MealProvider = (props) => {
         return [mealDetails, ...prevCartList];
       });
     } else if (similarItemHandlerLength > 0) {
-      console.log("similarItemHandler", typeof similarItemHandler.quantity);
-      console.log("mealDetailsQuantity", typeof mealDetails.quantity);
       similarItemHandler.quantity += mealDetails.quantity;
     }
-
-    console.log("after mealDetailsQuantity", typeof mealDetails.quantity);
   };
+
+  const addQuantity=(id, quantity)=>{
+  
+
+  }
 
   const mealContextValues = {
     addToCartList: addToCartList,
     cartList: cartList,
+    addQuantity: addQuantity,
   };
 
   return (

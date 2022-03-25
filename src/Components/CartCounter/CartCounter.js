@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
-import Button from '../ReUsables/Button'
+import React, { useState, useContext } from "react";
+import Button from "../ReUsables/Button";
+import CartCounterStyle from "./CartCounterStyle";
+import mealContext from "../../Store/meal-Context";
 
-const CartCounter = () => {
-    const [counterValue, setCounterValue] = useState(1);
+const CartCounter = ({ id, quantity }) => {
+  //   const [counterValue, setCounterValue] = useState(quantity);
+
+  const { cartList } = useContext(mealContext);
+  const decrement = () => {};
+  const increment = () => {};
   return (
-    <>
-        <Button>
-            -
-        </Button>
-        <div> {counterValue} </div>
-        <Button>
-            +
-        </Button>
-    </>
-  )
-}
+    <CartCounterStyle>
+      <Button onClick={decrement}>-</Button>
+      <div className="counterValue"> {quantity} </div>
+      <Button onClick={increment}>+</Button>
+    </CartCounterStyle>
+  );
+};
 
-export default CartCounter
+export default CartCounter;

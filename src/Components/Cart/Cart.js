@@ -5,7 +5,7 @@ import mealContext from "../../Store/meal-Context";
 import Button from "../ReUsables/Button";
 import _ from "lodash";
 import emptycart from "../../assets/empty-cart2.gif";
-import CartCounter from "../CartCounter/cartCounter";
+import CartCounter from "../CartCounter/CartCounter";
 
 export const BackDropper = ({ closeCart }) => {
   return <BackDrop onClick={closeCart}></BackDrop>;
@@ -17,7 +17,7 @@ export const Cart = ({ closeCart }) => {
   return (
     <ModalStyle>
       <CartStyle>
-        <div className="header">Cart Itemssd</div>
+        <div className="header">Cart Items</div>
         <div className="cartitems">
           {cartListLength > 0 ? (
             cartList.map((item) => {
@@ -28,7 +28,10 @@ export const Cart = ({ closeCart }) => {
                   </div>
                   <div className="itemName">{item.name}</div>
                   <div>${item.price}</div>
-                  <div>{/* {item.quantity} */}saasds</div>
+                  <div>
+                    {/* {item.quantity} */}
+                    <CartCounter id ={item.id} quantity = {item.quantity} />
+                  </div>
                 </div>
               );
             })
