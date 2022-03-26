@@ -1,8 +1,9 @@
 import { createContext } from "react";
 
 const mealContext = createContext({
-    addToCartList:null,
     cartList: null,
+    addToCartList:null,
+    removeFromCartList:null,
     addQuantity:null,
     reduceQuantity:null,
 

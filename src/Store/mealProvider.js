@@ -29,6 +29,13 @@ const MealProvider = (props) => {
     }
   };
 
+  const removeFromCartList = (id) => {
+    const filterList = cartList.filter((item) => {
+      return item.id !== id;
+    });
+    setCartList(filterList);
+  };
+
   const addQuantity = (id) => {
     const item = cartListFinder(id);
     item.quantity += 1;
@@ -37,13 +44,19 @@ const MealProvider = (props) => {
 
   const reduceQuantity = (id) => {
     const item = cartListFinder(id);
-    item.quantity -= 1;
+    if (item.quantity > 0) {
+      item.quantity -= 1;
+    }
+    if (item.quantity === 0) {
+      removeFromCartList(id);
+    }
     return item.quantity;
   };
 
   const mealContextValues = {
-    addToCartList: addToCartList,
     cartList: cartList,
+    addToCartList: addToCartList,
+    removeFromCartList: removeFromCartList,
     addQuantity: addQuantity,
     reduceQuantity: reduceQuantity,
   };

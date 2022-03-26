@@ -4,9 +4,16 @@ const CartCounterStyle = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  /* border: 2px solid green; */
+  background-color: #ff73001a;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0 auto;
+  min-width: fit-content;
 
   Button {
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0;
   }
 
   .counterValue {
@@ -14,6 +21,7 @@ const CartCounterStyle = styled.div`
     font-weight: 700;
     display: flex;
     justify-content: center;
+    width: 100%;
   }
 `;
 

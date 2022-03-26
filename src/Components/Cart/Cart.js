@@ -12,8 +12,13 @@ export const BackDropper = ({ closeCart }) => {
 };
 
 export const Cart = ({ closeCart }) => {
-  const { cartList } = useContext(mealContext);
+  const { cartList, removeFromCartList } = useContext(mealContext);
+
   const cartListLength = _.size(cartList);
+
+  // const removeHandler=()=>{
+
+  // }
   return (
     <ModalStyle>
       <CartStyle>
@@ -28,10 +33,11 @@ export const Cart = ({ closeCart }) => {
                   </div>
                   <div className="itemName">{item.name}</div>
                   <div>${item.price}</div>
-                  <div>
+                  <div className="counterCont">
                     {/* {item.quantity} */}
                     <CartCounter id ={item.id} quantity = {item.quantity} />
                   </div>
+                  <div className="remove" onClick={()=>removeFromCartList(item.id)}>Remove </div>
                 </div>
               );
             })

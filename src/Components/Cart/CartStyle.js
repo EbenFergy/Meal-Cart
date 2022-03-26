@@ -15,7 +15,6 @@ const CartStyle = styled.div`
   align-items: center; */
   justify-content: center;
   /* border: 2px solid red; */
-  
 
   .header {
     width: 100%;
@@ -65,7 +64,7 @@ const CartStyle = styled.div`
 
   .payBtn {
     /* background-color: #ff0000; */
-    background-color: rgb(25,166,100);
+    background-color: rgb(25, 166, 100);
   }
 
   .closeBtn {
@@ -91,14 +90,20 @@ const CartStyle = styled.div`
       align-items: center;
       /* gap: 1rem; */
       /* background-color: rgba(220, 220, 220, 1); */
-      width: 80%;
+      width: 90%;
       padding: 1rem 3rem;
       border-bottom: 1px solid rgba(210, 210, 210, 1);
+      /* border: 2px solid yellow; */
 
       div {
         width: 20%;
-        /* border: 2px solid red;  */
+        /* border: 2px solid red; */
         text-align: center;
+      }
+
+      .counterCont {
+        /* border: 2px solid orange; */
+        width: fit-content;
       }
 
       .image {
@@ -112,6 +117,12 @@ const CartStyle = styled.div`
 
       .itemName {
         text-align: left;
+      }
+
+      .remove {
+        color: #ff7300;
+        cursor: pointer;
+        font-weight: 500;
       }
     }
   }

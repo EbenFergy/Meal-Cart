@@ -26,10 +26,6 @@ const MealCard = ({ calories, image, label, id }) => {
       id: id,
     };
 
-    console.log("cartSection mealDetailsQuantity", typeof mealDetails.quantity);
-
-    console.log("ID", mealDetails.id);
-
     // confirm that an entry was made
     const mealDetailsLength = Object.keys(mealDetails).length;
     console.log("mealDetailsLength", mealDetailsLength);
