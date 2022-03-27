@@ -4,7 +4,7 @@ const MealWrapperStyle = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 0 3rem;
   /* border: 2px solid green; */
   box-sizing: border-box;
 
@@ -25,6 +25,11 @@ const MealWrapperStyle = styled.div`
         font-size: 1rem;
       }
     }
+  }
+
+  .filterCont{
+    display:flex ;
+    justify-content:center ;
   }
 `;
 

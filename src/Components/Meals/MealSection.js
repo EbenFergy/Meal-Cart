@@ -49,22 +49,25 @@ const MealSection = ({ apiData }) => {
     //   })}
     // </MealWrapperStyle>
 
-<MealWrapperStyle>
-        <Filter CountryNames={CountryNames}/>
-        <MealStyle>
-          {apiData.map(({ recipe }) => {
-            return (
-              <MealCard
-                key={recipe.uri}
-                calories={recipe.calories}
-                image={recipe.image}
-                label={recipe.label}
-                id={recipe.uri}
-              />
-            );
-          })}
-        </MealStyle>
-</MealWrapperStyle>
+    <MealWrapperStyle>
+      <div className="filterCont">
+        <Filter CountryNames={CountryNames} />
+      </div>
+
+      <MealStyle>
+        {apiData.map(({ recipe }) => {
+          return (
+            <MealCard
+              key={recipe.uri}
+              calories={recipe.calories}
+              image={recipe.image}
+              label={recipe.label}
+              id={recipe.uri}
+            />
+          );
+        })}
+      </MealStyle>
+    </MealWrapperStyle>
   );
 };
 

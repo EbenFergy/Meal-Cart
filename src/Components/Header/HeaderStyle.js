@@ -11,6 +11,7 @@ const HeaderStyle = styled.div`
   );
   height: 100vh;
   display: flex;
+  /* display:none ; */
   flex-direction: column;
   /* position: fixed; */
 

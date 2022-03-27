@@ -14,7 +14,7 @@ const AppStyle = styled.div`
   }
 
   @media only screen and (max-width: 1200px) {
-   display:none ;
+    /* display:none ; */
 
     .noView {
       display: block;
