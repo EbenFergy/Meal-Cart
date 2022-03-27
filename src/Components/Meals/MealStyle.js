@@ -12,7 +12,7 @@ const MealStyle = styled.div`
     margin: 0;
   }
 
-  padding: 1rem 1rem;
+  padding: 0 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 60px 15px;

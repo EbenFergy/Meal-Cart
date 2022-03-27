@@ -5,7 +5,7 @@ const MealWrapperStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid green;
+  /* border: 2px solid green; */
   box-sizing: border-box;
 
   .countryNames {
