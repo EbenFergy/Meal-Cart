@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const AppStyle = styled.div`
+export const AppStyle = styled.div`
   * {
     box-sizing: border;
   }
@@ -10,16 +10,24 @@ const AppStyle = styled.div`
   /* border: 2px solid blue; */
 
   .noView {
-    display: none;
   }
 
   @media only screen and (max-width: 1200px) {
-    /* display:none ; */
-
-    .noView {
-      display: block;
-    }
+    display: none;
   }
 `;
 
-export default AppStyle;
+export const NoView = styled.div`
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  color: #ffffff;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: 1200px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid green; */
+  }
+`;

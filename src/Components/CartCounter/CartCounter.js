@@ -6,13 +6,16 @@ import mealContext from "../../Store/meal-Context";
 const CartCounter = ({ id, quantity }) => {
   const [counterValue, setCounterValue] = useState(quantity);
 
-  const { addQuantity, reduceQuantity } = useContext(mealContext);
+  const { addQuantity, reduceQuantity, addCartPrices } =
+    useContext(mealContext);
   const decrement = () => {
     setCounterValue(reduceQuantity(id));
+    addCartPrices();
   };
 
   const increment = () => {
     setCounterValue(addQuantity(id));
+    addCartPrices();
   };
 
   return (

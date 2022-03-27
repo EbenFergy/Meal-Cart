@@ -11,10 +11,11 @@ import mealContext from "../../Store/meal-Context";
 const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
 
-  const { cartList } = useContext(mealContext);
+  const { cartList, addCartPrices } = useContext(mealContext);
 
   const viewCartHandler = () => {
     setCartOpen(true);
+    addCartPrices();
   };
 
   const closeCart = () => {

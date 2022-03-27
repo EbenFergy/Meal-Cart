@@ -12,9 +12,9 @@ const MealCard = ({ calories, image, label, id }) => {
     setQuantity(parseInt(e.target.value));
   };
 
-  const price = (calories / 98).toFixed(2);
+  const price = parseInt((calories / 98).toFixed(2));
 
-  // console.log("quantityState", quantity);
+  // console.log("yooo price", typeof price);
 
   const submitHandler = (e) => {
     e.preventDefault();

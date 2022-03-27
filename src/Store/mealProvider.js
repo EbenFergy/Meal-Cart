@@ -4,6 +4,7 @@ import _ from "lodash";
 
 const MealProvider = (props) => {
   const [cartList, setCartList] = useState([]);
+  const [cartTotalPrice, setCartTotalPrice] = useState(0.0);
 
   const cartListFinder = (id) => {
     return cartList.find((items) => {
@@ -34,6 +35,7 @@ const MealProvider = (props) => {
       return item.id !== id;
     });
     setCartList(filterList);
+    addCartPrices();
   };
 
   const addQuantity = (id) => {
@@ -53,12 +55,27 @@ const MealProvider = (props) => {
     return item.quantity;
   };
 
+  const addCartPrices = () => {
+    let thePrice = cartList.reduce((accumulator, item) => {
+      let correctPrice = 0;
+
+      if (cartList.length > 0) {
+        correctPrice = item.quantity * item.price;
+      }
+      return accumulator + correctPrice;
+    }, 0);
+
+    setCartTotalPrice(thePrice);
+  };
+
   const mealContextValues = {
     cartList: cartList,
     addToCartList: addToCartList,
     removeFromCartList: removeFromCartList,
     addQuantity: addQuantity,
     reduceQuantity: reduceQuantity,
+    totalPrice: cartTotalPrice,
+    addCartPrices: addCartPrices,
   };
 
   return (

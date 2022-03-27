@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Components/Header/Header";
-import AppStyle from "./AppStyle";
+import { AppStyle, NoView } from "./AppStyle";
 import MealSection from "./Components/Meals/MealSection";
 import MealProvider from "./Store/mealProvider";
 import RecipeApi from "./api/RecipeApi";
@@ -11,13 +11,17 @@ const App = () => {
   // console.log("recipeAPI", RecipeApi());
 
   return (
-    <AppStyle>
-      <div className="noView">No view for smaller screens yet...</div>
-      <MealProvider>
-        <Header />
-        <MealSection apiData={RecipeApi()} />
-      </MealProvider>
-    </AppStyle>
+    <>
+      <NoView>
+        <div>No view for smaller screens yet...</div>
+      </NoView>
+      <AppStyle>
+        <MealProvider>
+          <Header />
+          <MealSection apiData={RecipeApi()} />
+        </MealProvider>
+      </AppStyle>
+    </>
   );
 };
 

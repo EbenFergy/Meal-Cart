@@ -53,13 +53,21 @@ const CartStyle = styled.div`
   }
 
   .footer {
-    /* border: 2px solid red; */
     display: flex;
     align-items: center;
-    /* height: 12%; */
-    justify-content: flex-end;
-    padding-right: 2rem;
-    gap: 1rem;
+    justify-content: space-between;
+    padding: 1rem 1rem 1rem 3rem;
+    box-shadow: 2px -1px 10px rgba(200, 200, 200, 1);
+    /* border: 2px solid red; */
+
+    .right {
+      display: flex;
+      align-items: center;
+      /* height: 12%; */
+      justify-content: flex-end;
+      padding-right: 2rem;
+      gap: 1rem;
+    }
   }
 
   .payBtn {
@@ -68,8 +76,10 @@ const CartStyle = styled.div`
   }
 
   .closeBtn {
-    background-color: rgba(37, 46, 70, 1);
-    /* background-color: #ff0000; */
+    /* background-color: rgba(37, 46, 70, 1); */
+    border: 2px solid rgba(37, 46, 70, 1);
+    background: none;
+    color: rgba(37, 46, 70, 1);
   }
 
   .cartitems {
