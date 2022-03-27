@@ -2,22 +2,23 @@ import React from "react";
 import MealStyle from "./MealStyle";
 import MealCard from "./MealCard";
 import MealWrapperStyle from "./MealWrapperStyle";
+import Filter from "../Filter/Filter";
 
 const MealSection = ({ apiData }) => {
-  // const CountryNames = [
-  //   "african",
-  //   "american",
-  //   "asian",
-  //   "british",
-  //   "caribbean",
-  //   "chinese",
-  //   "french",
-  //   "indian",
-  //   "italian",
-  //   "japanese",
-  //   "mediterranean",
-  //   "mexican",
-  // ];
+  const CountryNames = [
+    "african",
+    "american",
+    "asian",
+    "british",
+    "caribbean",
+    "chinese",
+    "french",
+    "indian",
+    "italian",
+    "japanese",
+    "mediterranean",
+    "mexican",
+  ];
   // const filtered = (country) => {
   //   return apiData.filter(({ recipe }) => recipe.cuisineType[0] === country);
   // };
@@ -49,6 +50,7 @@ const MealSection = ({ apiData }) => {
     // </MealWrapperStyle>
 
 <MealWrapperStyle>
+        <Filter CountryNames={CountryNames}/>
         <MealStyle>
           {apiData.map(({ recipe }) => {
             return (

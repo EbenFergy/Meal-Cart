@@ -12,20 +12,20 @@ const MealStyle = styled.div`
     margin: 0;
   }
 
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 40px 10px;
+  grid-gap: 60px 15px;
   justify-content: center;
-  /* border: 2px solid yellow;*/
+  /* border: 2px solid yellow; */
   margin: 0;
   max-width: 100vw;
   box-sizing: border-box;
 
   .meal-cont {
-    height: 250px;
+    height: 200px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 0;
     background-color: #c4c4c4;
     overflow: hidden;
@@ -51,12 +51,12 @@ const MealStyle = styled.div`
     left: 0;
     height: 300px;
     width: 100%;
-    padding: 0.2rem 0.2rem;
+    /* padding: 0.2rem 0.2rem; */
 
     height: fit-content;
     border-radius: 10px;
     background: rgba(14, 17, 26, 1);
-    border: 1px solid rgba(37, 46, 90, 1);
+    /* border: 1px solid rgba(37, 46, 90, 1); */
     opacity: 0;
     overflow: hidden;
     box-shadow: 0px 0px 6px 2px rgba(5, 8, 17, 1);

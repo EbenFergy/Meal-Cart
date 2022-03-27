@@ -2,7 +2,11 @@ import styled from "styled-components";
 
 const MealWrapperStyle = styled.div`
   width: 100%;
-  /* border: 2px solid green; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid green;
+  box-sizing: border-box;
 
   .countryNames {
     margin: 5rem 2rem 0 2rem;
