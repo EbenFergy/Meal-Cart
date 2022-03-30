@@ -68,6 +68,16 @@ const CartStyle = styled.div`
       padding-right: 2rem;
       gap: 1rem;
     }
+
+    .footerPrice {
+      font-weight: 600;
+      font-size: 1.2rem;
+
+      span {
+        font-weight: 700;
+        font-size: 1.6rem;
+      }
+    }
   }
 
   .payBtn {

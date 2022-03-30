@@ -13,6 +13,8 @@ const Header = () => {
 
   const { cartList, addCartPrices } = useContext(mealContext);
 
+  console.log("cartlist in header", cartList);
+
   const viewCartHandler = () => {
     setCartOpen(true);
     addCartPrices();

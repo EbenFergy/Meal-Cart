@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import CartStyle from "./CartStyle";
 import { BackDrop, ModalStyle } from "../ReUsables/Modal/ModalStyle";
 import mealContext from "../../Store/meal-Context";
@@ -12,13 +12,26 @@ export const BackDropper = ({ closeCart }) => {
 };
 
 export const Cart = ({ closeCart }) => {
-  const { cartList, removeFromCartList, totalPrice } = useContext(mealContext);
+  const { cartList, removeFromCartList, totalPrice, addCartPrices } =
+    useContext(mealContext);
+
+  // const [displayPrice, setDisplayPrice] = useState(0.0);
+  console.log("current total price", totalPrice);
+  console.log("cartlist in cart", cartList);
 
   const cartListLength = _.size(cartList);
 
-  // const removeHandler=()=>{
+  useEffect(() => {
+    addCartPrices();
+    console.log("cartlist in cart removeHandler", cartList);
+  }, [cartList, addCartPrices]);
 
-  // }
+  const removeHandler = (id) => {
+    removeFromCartList(id);
+
+    // console.log("this is total price", totalPrice);
+    // setDisplayPrice(totalPrice);
+  };
   return (
     <ModalStyle>
       <CartStyle>
@@ -39,7 +52,7 @@ export const Cart = ({ closeCart }) => {
                   </div>
                   <div
                     className="remove"
-                    onClick={() => removeFromCartList(item.id)}
+                    onClick={() => removeHandler(item.id)}
                   >
                     Remove{" "}
                   </div>
@@ -55,7 +68,9 @@ export const Cart = ({ closeCart }) => {
           )}
         </div>
         <div className="footer">
-          <div>Total: ${totalPrice}</div>
+          <div className="footerPrice">
+            Total: <span> ${totalPrice}</span>
+          </div>
           <div className="right">
             {cartListLength > 0 && (
               <Button className="payBtn">Proceed to Pay</Button>

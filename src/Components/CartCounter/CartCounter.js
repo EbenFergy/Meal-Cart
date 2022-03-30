@@ -8,6 +8,7 @@ const CartCounter = ({ id, quantity }) => {
 
   const { addQuantity, reduceQuantity, addCartPrices } =
     useContext(mealContext);
+
   const decrement = () => {
     setCounterValue(reduceQuantity(id));
     addCartPrices();

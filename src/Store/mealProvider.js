@@ -6,6 +6,7 @@ const MealProvider = (props) => {
   const [cartList, setCartList] = useState([]);
   const [cartTotalPrice, setCartTotalPrice] = useState(0.0);
 
+  // find an item in the cart
   const cartListFinder = (id) => {
     return cartList.find((items) => {
       return id === items.id;
@@ -30,20 +31,27 @@ const MealProvider = (props) => {
     }
   };
 
-  const removeFromCartList = (id) => {
-    const filterList = cartList.filter((item) => {
+  // FILTER CARTLIST
+  const filterHandler = (id) => {
+    return cartList.filter((item) => {
       return item.id !== id;
     });
-    setCartList(filterList);
-    addCartPrices();
   };
 
+  // remove an item from the cart list of items
+  const removeFromCartList = (id) => {
+    setCartList(filterHandler(id));
+    // addCartPrices();
+  };
+
+  // increase a particular item's quantity
   const addQuantity = (id) => {
     const item = cartListFinder(id);
     item.quantity += 1;
     return item.quantity;
   };
 
+  //  reduce a particular item's quantity
   const reduceQuantity = (id) => {
     const item = cartListFinder(id);
     if (item.quantity > 0) {
@@ -55,6 +63,7 @@ const MealProvider = (props) => {
     return item.quantity;
   };
 
+  // sum up all cart prices
   const addCartPrices = () => {
     let thePrice = cartList.reduce((accumulator, item) => {
       let correctPrice = 0;
@@ -65,9 +74,10 @@ const MealProvider = (props) => {
       return accumulator + correctPrice;
     }, 0);
 
-    setCartTotalPrice(thePrice);
+    setCartTotalPrice(thePrice.toFixed(2));
   };
 
+  // provider list
   const mealContextValues = {
     cartList: cartList,
     addToCartList: addToCartList,
