@@ -9,9 +9,6 @@ export const AppStyle = styled.div`
   max-width: 100vw;
   /* border: 2px solid blue; */
 
-  .noView {
-  }
-
   @media only screen and (max-width: 1200px) {
     display: none;
   }
@@ -26,8 +23,12 @@ export const NoView = styled.div`
 
   @media only screen and (max-width: 1200px) {
     display: flex;
+    gap: 2rem;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-size: 2rem;
+    font-weight: lighter;
     /* border: 2px solid green; */
   }
 `;

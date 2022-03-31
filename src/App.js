@@ -4,6 +4,7 @@ import { AppStyle, NoView } from "./AppStyle";
 import MealSection from "./Components/Meals/MealSection";
 import MealProvider from "./Store/mealProvider";
 import RecipeApi from "./api/RecipeApi";
+import noView from "./assets/noView.gif";
 
 const App = () => {
   // console.log("Appmeals", meal);
@@ -13,6 +14,9 @@ const App = () => {
   return (
     <>
       <NoView>
+        <div>
+          <img src={noView} alt="noView" />
+        </div>
         <div>No view for smaller screens yet...</div>
       </NoView>
       <AppStyle>
