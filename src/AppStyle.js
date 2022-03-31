@@ -29,6 +29,15 @@ export const NoView = styled.div`
     justify-content: center;
     font-size: 2rem;
     font-weight: lighter;
+
+    div {
+      padding: 1rem;
+      text-align: center;
+
+      img {
+        max-width: 70vw;
+      }
+    }
     /* border: 2px solid green; */
   }
 `;
