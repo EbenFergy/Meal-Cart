@@ -17,7 +17,7 @@ export const AppStyle = styled.div`
 export const NoView = styled.div`
   display: none;
   width: 100vw;
-  height: 100vh;
+  height: 100 vh;
   color: #ffffff;
   box-sizing: border-box;
 
