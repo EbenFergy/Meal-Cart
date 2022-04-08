@@ -21,8 +21,8 @@ const MealStyle = styled.div`
   margin: 0;
   max-width: 100vw;
   box-sizing: border-box;
-  display: ${({ filterParamsLength }) =>
-    filterParamsLength > 0 ? "grid" : "flex"};
+  display: ${({ filterParamsLength, filterController }) =>
+    filterController ? (filterParamsLength > 0 ? "grid" : "flex") : "grid"};
 
   .noMeal {
     margin: 0 auto;
@@ -30,7 +30,7 @@ const MealStyle = styled.div`
     justify-self: auto;
     text-align: center;
     font-weight: 200;
-    font-size: 1.2rem;
+    font-size: 1rem;
 
     img {
       opacity: 0.4;

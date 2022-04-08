@@ -74,7 +74,10 @@ const MealSection = ({ apiData }) => {
         />
       </div>
 
-      <MealStyle filterParamsLength={filterParams.length}>
+      <MealStyle
+        filterParamsLength={filterParams.length}
+        filterController={filterController}
+      >
         {filterController ? (
           filterParams.length > 0 ? (
             filterParams.map(({ recipe }) => {
@@ -91,7 +94,7 @@ const MealSection = ({ apiData }) => {
           ) : (
             <div className="noMeal">
               <img src={noMeal} alt="no meal" />
-              <div> no meal yet...</div>
+              <div> no meal found try another option...</div>
             </div>
           )
         ) : (
