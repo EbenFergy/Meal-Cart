@@ -3,6 +3,7 @@ import MealStyle from "./MealStyle";
 import MealCard from "./MealCard";
 import MealWrapperStyle from "./MealWrapperStyle";
 import Filter from "../Filter/Filter";
+import noMeal from "../../assets/noMeal.gif";
 
 const MealSection = ({ apiData }) => {
   const [filterController, setFilterController] = useState(false);
@@ -73,7 +74,7 @@ const MealSection = ({ apiData }) => {
         />
       </div>
 
-      <MealStyle>
+      <MealStyle filterParamsLength={filterParams.length}>
         {filterController ? (
           filterParams.length > 0 ? (
             filterParams.map(({ recipe }) => {
@@ -88,7 +89,10 @@ const MealSection = ({ apiData }) => {
               );
             })
           ) : (
-            <div>no meal yet...</div>
+            <div className="noMeal">
+              <img src={noMeal} alt="no meal" />
+              <div> no meal yet...</div>
+            </div>
           )
         ) : (
           apiData.map(({ recipe }) => {
