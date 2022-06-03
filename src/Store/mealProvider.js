@@ -66,11 +66,11 @@ const MealProvider = (props) => {
   // sum up all cart prices
   const addCartPrices = () => {
     let thePrice = cartList.reduce((accumulator, item) => {
-      let correctPrice = 0;
+      // let correctPrice = 0;
 
-      if (cartList.length > 0) {
-        correctPrice = item.quantity * item.price;
-      }
+      // if (cartList.length > 0) {
+      let correctPrice = item.quantity * item.price;
+      // }
       return accumulator + correctPrice;
     }, 0);
 
