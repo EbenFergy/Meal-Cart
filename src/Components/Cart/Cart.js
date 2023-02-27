@@ -6,15 +6,18 @@ import Button from "../ReUsables/Button";
 import _ from "lodash";
 import emptycart from "../../assets/empty-cart2.gif";
 import CartCounter from "../CartCounter/CartCounter";
+import { useSelector } from "react-redux";
 
 export const BackDropper = ({ closeCart }) => {
   return <BackDrop onClick={closeCart}></BackDrop>;
 };
 
 export const Cart = ({ closeCart }) => {
-  const { cartList, removeFromCartList, totalPrice, addCartPrices } =
+  const { removeFromCartList, totalPrice, addCartPrices } =
     useContext(mealContext);
 
+  const cartList = useSelector((state) => state.cartList.cartList);
+  console.log("......cartlist redux baby", cartList);
   // const [displayPrice, setDisplayPrice] = useState(0.0);
   console.log("current total price", totalPrice);
   console.log("cartlist in cart", cartList);
@@ -23,7 +26,7 @@ export const Cart = ({ closeCart }) => {
 
   useEffect(() => {
     addCartPrices();
-    console.log("cartlist in cart removeHandler", cartList);
+    console.log("cartlist in cart", cartList);
   }, [cartList, addCartPrices]);
 
   const removeHandler = (id) => {
