@@ -1,22 +1,28 @@
 import React, { useState, useContext } from "react";
 import Button from "../ReUsables/Button";
 import CartCounterStyle from "./CartCounterStyle";
-import mealContext from "../../Store/meal-Context";
+// import mealContext from "../../Store/meal-Context";
+import { useDispatch } from "react-redux";
+import { cartListActions } from "../../Redux/store";
 
 const CartCounter = ({ id, quantity }) => {
   const [counterValue, setCounterValue] = useState(quantity);
 
-  const { addQuantity, reduceQuantity, addCartPrices } =
-    useContext(mealContext);
+  const dispatch = useDispatch();
+
+  // const { addQuantity, reduceQuantity, addCartPrices } =
+  //   useContext(mealContext);
 
   const decrement = () => {
-    setCounterValue(reduceQuantity(id));
-    addCartPrices();
+    // setCounterValue(reduceQuantity(id));
+    // addCartPrices();
+    dispatch(cartListActions.reduceQuantity(id));
   };
 
   const increment = () => {
-    setCounterValue(addQuantity(id));
-    addCartPrices();
+    // setCounterValue(addQuantity(id));
+    // addCartPrices();
+    dispatch(cartListActions.addQuantity(id));
   };
 
   return (

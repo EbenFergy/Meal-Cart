@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CartStyle from "./CartStyle";
 import { BackDrop, ModalStyle } from "../ReUsables/Modal/ModalStyle";
 import mealContext from "../../Store/meal-Context";
@@ -6,31 +6,43 @@ import Button from "../ReUsables/Button";
 import _ from "lodash";
 import emptycart from "../../assets/empty-cart2.gif";
 import CartCounter from "../CartCounter/CartCounter";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { cartListActions } from "../../Redux/store";
 
 export const BackDropper = ({ closeCart }) => {
   return <BackDrop onClick={closeCart}></BackDrop>;
 };
 
 export const Cart = ({ closeCart }) => {
-  const { removeFromCartList, totalPrice, addCartPrices } =
-    useContext(mealContext);
+  const [totalPrice, setTotalPrice] = useState(0.0);
+  // const { removeFromCartList } = useContext(mealContext);
 
   const cartList = useSelector((state) => state.cartList.cartList);
   console.log("......cartlist redux baby", cartList);
   // const [displayPrice, setDisplayPrice] = useState(0.0);
+
+  const dispatch = useDispatch;
+
+  // reducer function for cartPrice
+  useEffect(() => {
+    const price = cartList.reduce((accumulator, item) => {
+      return item.price + accumulator;
+    }, 0);
+
+    setTotalPrice(price);
+  }, [cartList]);
   console.log("current total price", totalPrice);
-  console.log("cartlist in cart", cartList);
 
   const cartListLength = _.size(cartList);
 
-  useEffect(() => {
-    addCartPrices();
-    console.log("cartlist in cart", cartList);
-  }, [cartList, addCartPrices]);
+  // useEffect(() => {
+  //   addCartPrices();
+  //   console.log("cartlist in cart", cartList);
+  // }, [cartList, addCartPrices]);
 
   const removeHandler = (id) => {
-    removeFromCartList(id);
+    dispatch(cartListActions.removeFromCartList(id));
+    // removeFromCartList(id);
 
     // console.log("this is total price", totalPrice);
     // setDisplayPrice(totalPrice);
