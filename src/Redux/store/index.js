@@ -16,7 +16,8 @@ const cartList = createSlice({
   initialState: cartInitialState,
   reducers: {
     addToCartList(state, action) {
-      state.cartList.push(action.payload);
+      state.cartList.find((item) => item.id === action.payload) &&
+        state.cartList.push(action.payload);
     },
 
     removeFromCartList(state, action) {
