@@ -2,15 +2,22 @@ import React, { useState, useContext } from "react";
 import mealContext from "../../Store/meal-Context";
 import Button from "../ReUsables/Button";
 import InputStyle from "../ReUsables/InputStyle";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartListActions } from "../../Redux/store";
 
 const MealCard = ({ calories, image, label, id }) => {
   const [quantity, setQuantity] = useState(1);
 
   // const { addToCartList } = useContext(mealContext);
-
+  const cartList = useSelector((state) => state.cartList.cartList);
   const dispatch = useDispatch();
+
+  // find and return an item in a list using it's id
+  const cartListFinder = (list, id) => {
+    const checkList = list.find((items) => id === items.id);
+    if (checkList) return true;
+    else return false;
+  };
 
   const quantityHandler = (e) => {
     setQuantity(parseInt(e.target.value));
@@ -37,6 +44,7 @@ const MealCard = ({ calories, image, label, id }) => {
     // if an entry was made, send that entry to the cart context handler component
     // mealDetailsLength > 0 && addToCartList(mealDetails);
     mealDetailsLength > 0 &&
+      !cartListFinder(cartList, mealDetails.id) &&
       dispatch(cartListActions.addToCartList(mealDetails));
   };
 

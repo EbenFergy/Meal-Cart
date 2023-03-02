@@ -1,9 +1,9 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 
-// find an item in a list using it's id
+// find and return an item in a list using it's id
 const cartListFinder = (list, id) => {
-  return list.find((items) => {
+  list.find((items) => {
     return id === items.id;
   });
 };
@@ -16,8 +16,7 @@ const cartList = createSlice({
   initialState: cartInitialState,
   reducers: {
     addToCartList(state, action) {
-      state.cartList.find((item) => item.id === action.payload) &&
-        state.cartList.push(action.payload);
+      state.cartList.push(action.payload);
     },
 
     removeFromCartList(state, action) {
