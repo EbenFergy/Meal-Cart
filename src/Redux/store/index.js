@@ -1,13 +1,6 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 
-// find and return an item in a list using it's id
-const cartListFinder = (list, id) => {
-  list.find((items) => {
-    return id === items.id;
-  });
-};
-
 // create cartList initialState
 const cartInitialState = { cartList: [] };
 
@@ -16,7 +9,14 @@ const cartList = createSlice({
   initialState: cartInitialState,
   reducers: {
     addToCartList(state, action) {
-      state.cartList.push(action.payload);
+      let findItem = state.cartList.find(
+        (item) => item.id === action.payload.id
+      );
+      if (!findItem) {
+        state.cartList.push(action.payload);
+      } else {
+        findItem.quantity += 1;
+      }
     },
 
     removeFromCartList(state, action) {
@@ -26,8 +26,11 @@ const cartList = createSlice({
 
     addQuantity(state, action) {
       const id = action.payload;
-      const item = cartListFinder(state.cartList, id);
-      item.quantity += 1;
+      //   const item = state.cartList.find((items) => {
+      //     return id === items.id;
+      //   });
+      //   item.quantity += 1;
+      console.log("cartList in store...", state);
     },
 
     reduceQuantity(state, action) {
