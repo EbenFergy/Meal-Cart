@@ -15,7 +15,7 @@ const cartList = createSlice({
       if (!findItem) {
         state.cartList.push(action.payload);
       } else {
-        findItem.quantity += 1;
+        findItem.quantity += action.payload.quantity;
       }
     },
 
@@ -25,18 +25,13 @@ const cartList = createSlice({
     },
 
     addQuantity(state, action) {
-      const id = action.payload;
-      //   const item = state.cartList.find((items) => {
-      //     return id === items.id;
-      //   });
-      //   item.quantity += 1;
-      console.log("cartList in store...", state);
+      let findItem = state.cartList.find((item) => item.id === action.payload);
+      findItem.quantity += 1;
     },
 
     reduceQuantity(state, action) {
-      const id = action.payload;
-      const item = cartListFinder(state.cartList, id);
-      item.quantity -= 1;
+      let findItem = state.cartList.find((item) => item.id === action.payload);
+      findItem.quantity -= 1;
     },
   },
 });

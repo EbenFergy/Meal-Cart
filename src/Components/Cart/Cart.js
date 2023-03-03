@@ -15,18 +15,16 @@ export const BackDropper = ({ closeCart }) => {
 
 export const Cart = ({ closeCart }) => {
   const [totalPrice, setTotalPrice] = useState(0.0);
-  // const { removeFromCartList } = useContext(mealContext);
 
   const cartList = useSelector((state) => state.cartList.cartList);
   console.log("......cartlist redux baby", cartList);
-  // const [displayPrice, setDisplayPrice] = useState(0.0);
 
   const dispatch = useDispatch;
 
   // reducer function for cartPrice
   useEffect(() => {
     const price = cartList.reduce((accumulator, item) => {
-      return item.price + accumulator;
+      return item.price * item.quantity + accumulator;
     }, 0);
 
     setTotalPrice(price);
