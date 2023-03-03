@@ -18,7 +18,7 @@ export const Cart = ({ closeCart }) => {
   const cartList = useSelector((state) => state.cartList.cartList);
   console.log("......cartlist redux baby", cartList);
 
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   // reducer function for cartPrice
   useEffect(() => {

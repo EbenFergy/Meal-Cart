@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Components/Header/Header";
 import { AppStyle, NoView } from "./AppStyle";
 import MealSection from "./Components/Meals/MealSection";
-import MealProvider from "./Store/mealProvider";
+import MealProvider from "./Context_API/mealProvider";
 import RecipeApi from "./api/RecipeApi";
 import noView from "./assets/noView.gif";
 import Footer from "./Components/Footer/Footer";

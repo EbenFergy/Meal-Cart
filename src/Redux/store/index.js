@@ -19,8 +19,9 @@ const cartList = createSlice({
     },
 
     removeFromCartList(state, action) {
-      const id = action.payload;
-      state.cartList = state.cartList.filter((item) => item.id !== id);
+      state.cartList = state.cartList.filter(
+        (item) => item.id !== action.payload
+      );
     },
 
     addQuantity(state, action) {
@@ -30,7 +31,11 @@ const cartList = createSlice({
 
     reduceQuantity(state, action) {
       let findItem = state.cartList.find((item) => item.id === action.payload);
-      findItem.quantity -= 1;
+      findItem.quantity > 1
+        ? (findItem.quantity -= 1)
+        : (state.cartList = state.cartList.filter(
+            (item) => item.id !== action.payload
+          ));
     },
   },
 });
