@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import HeaderStyle from "./HeaderStyle";
 import CartImg from "../../assets/cart-img.svg";
 import Button from "../ReUsables/Button";
@@ -6,18 +7,16 @@ import leaves from "../../assets/leaves.png";
 import GlassCard from "../ReUsables/GlassCard";
 import ReactDOM from "react-dom";
 import { Cart, BackDropper } from "../Cart/Cart";
-import mealContext from "../../Store/meal-Context";
 
 const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
 
-  const { cartList, addCartPrices } = useContext(mealContext);
+  const cartList = useSelector((state) => state.cartList.cartList);
 
   console.log("cartlist in header", cartList);
 
   const viewCartHandler = () => {
     setCartOpen(true);
-    addCartPrices();
   };
 
   const closeCart = () => {

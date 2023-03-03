@@ -1,15 +1,12 @@
-import React, { useState, useContext } from "react";
-import mealContext from "../../Store/meal-Context";
+import React, { useState } from "react";
 import Button from "../ReUsables/Button";
 import InputStyle from "../ReUsables/InputStyle";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { cartListActions } from "../../Redux/store";
 
 const MealCard = ({ calories, image, label, id }) => {
   const [quantity, setQuantity] = useState(1);
 
-  // const { addToCartList } = useContext(mealContext);
-  const cartList = useSelector((state) => state.cartList.cartList);
   const dispatch = useDispatch();
 
   const quantityHandler = (e) => {
@@ -17,8 +14,6 @@ const MealCard = ({ calories, image, label, id }) => {
   };
 
   const price = parseInt((calories / 98).toFixed(2));
-
-  // console.log("yooo price", typeof price);
 
   const submitHandler = (e) => {
     e.preventDefault();

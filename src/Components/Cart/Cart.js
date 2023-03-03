@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CartStyle from "./CartStyle";
 import { BackDrop, ModalStyle } from "../ReUsables/Modal/ModalStyle";
-import mealContext from "../../Store/meal-Context";
 import Button from "../ReUsables/Button";
 import _ from "lodash";
 import emptycart from "../../assets/empty-cart2.gif";
@@ -33,17 +32,8 @@ export const Cart = ({ closeCart }) => {
 
   const cartListLength = _.size(cartList);
 
-  // useEffect(() => {
-  //   addCartPrices();
-  //   console.log("cartlist in cart", cartList);
-  // }, [cartList, addCartPrices]);
-
   const removeHandler = (id) => {
     dispatch(cartListActions.removeFromCartList(id));
-    // removeFromCartList(id);
-
-    // console.log("this is total price", totalPrice);
-    // setDisplayPrice(totalPrice);
   };
   return (
     <ModalStyle>

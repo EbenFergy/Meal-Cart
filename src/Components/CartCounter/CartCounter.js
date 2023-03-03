@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import Button from "../ReUsables/Button";
 import CartCounterStyle from "./CartCounterStyle";
-// import mealContext from "../../Store/meal-Context";
 import { useDispatch } from "react-redux";
 import { cartListActions } from "../../Redux/store";
 

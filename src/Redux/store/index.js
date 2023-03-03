@@ -1,5 +1,4 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
-import { useEffect } from "react";
 
 // create cartList initialState
 const cartInitialState = { cartList: [] };
