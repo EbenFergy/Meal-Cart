@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../ReUsables/Button";
 import CartCounterStyle from "./CartCounterStyle";
 import { useDispatch } from "react-redux";
-import { cartListActions } from "../../Redux/store";
+import { cartListActions } from "../../Redux/slices/cart_slice";
 
 const CartCounter = ({ id, quantity }) => {
   const dispatch = useDispatch();

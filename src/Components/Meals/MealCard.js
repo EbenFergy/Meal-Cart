@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "../ReUsables/Button";
 import InputStyle from "../ReUsables/InputStyle";
 import { useDispatch } from "react-redux";
-import { cartListActions } from "../../Redux/store";
+import { cartListActions } from "../../Redux/slices/cart_slice";
 
 const MealCard = ({ calories, image, label, id }) => {
   const [quantity, setQuantity] = useState(1);

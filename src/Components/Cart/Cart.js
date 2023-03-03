@@ -6,7 +6,7 @@ import _ from "lodash";
 import emptycart from "../../assets/empty-cart2.gif";
 import CartCounter from "../CartCounter/CartCounter";
 import { useSelector, useDispatch } from "react-redux";
-import { cartListActions } from "../../Redux/store";
+import { cartListActions } from "../../Redux/slices/cart_slice";
 
 export const BackDropper = ({ closeCart }) => {
   return <BackDrop onClick={closeCart}></BackDrop>;
