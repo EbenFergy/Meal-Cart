@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Components/Header/Header";
 import { AppStyle, NoView } from "./AppStyle";
 import MealSection from "./Components/Meals/MealSection";
@@ -6,11 +6,10 @@ import MealProvider from "./Context_API/mealProvider";
 import RecipeApi from "./api/RecipeApi";
 import noView from "./assets/noView.gif";
 import Footer from "./Components/Footer/Footer";
+import Auth from "./pages/Auth/Auth";
 
 const App = () => {
-  // console.log("Appmeals", meal);
-  // console.log("apidata", apiData);
-  // console.log("recipeAPI", RecipeApi());
+  const [displayAuth, setDisplayAuth] = useState(true);
 
   return (
     <>
@@ -21,10 +20,15 @@ const App = () => {
         <div>No view for smaller screens yet...</div>
       </NoView>
       <AppStyle>
-        <MealProvider>
-          <Header />
-          <MealSection apiData={RecipeApi()} />
-        </MealProvider>
+        {displayAuth ? (
+          <Auth />
+        ) : (
+          <MealProvider>
+            <Header />
+            <MealSection apiData={RecipeApi()} />
+          </MealProvider>
+        )}
+
         <Footer />
       </AppStyle>
     </>
