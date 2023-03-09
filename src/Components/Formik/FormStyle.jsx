@@ -5,10 +5,10 @@ export const FormCont = styled.div`
   flex-direction: column;
   /* align-items: center; */
   justify-content: center;
-  border: 2px solid #07a884;
+  /* border: 2px solid #07a884; */
   padding: 2rem;
   width: 50vw;
-  max-width: 18rem;
+  max-width: 25rem;
 
   .passwordWrapper {
     /* border: 2px solid red; */
@@ -42,9 +42,10 @@ export const InputStyle = styled.div`
   input,
   textarea,
   select {
-    padding: 0.5rem 1rem;
-    border: 1px solid #07a884;
+    padding: 1rem 1rem;
+    /* border: 1px solid #07a884; */
     font-family: inherit;
+    background-color: rgba();
   }
 `;
 
