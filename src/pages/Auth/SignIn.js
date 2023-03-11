@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useReducer } from "react";
 import AuthStyle from "./AuthStyle";
 import FormikControl from "../../Components/Formik/FormikControl";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../../Redux/slices/auth_slice";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { FormCont } from "../../Components/Formik/FormStyle";
 import Button from "../../Components/ReUsables/Button";
 import { auth, googleProvider } from "../../config/firebase";
 import {
-  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
 
-const Auth = () => {
+const SignIn = () => {
+  const authStatus = useSelector((state) => state.authStatus.signedIn);
+  const dispatch = useDispatch();
   const initialValues = {
     email: "",
     password: "",
@@ -25,20 +29,28 @@ const Auth = () => {
     password: Yup.string().required("Password required"),
   });
 
-  const onSubmit = async (values) => {
+  const signIn = async (values) => {
     try {
-      await createUserWithEmailAndPassword(auth, values.email, values.password);
-      console.log(auth);
+      const response = await signInWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+
+      dispatch(authActions.signedIn());
+
+      console.log("email and password response", response);
+      console.log("status report", authStatus);
     } catch (err) {
-      console.log(values);
+      // console.log(values);
       console.log("...error", err);
     }
   };
 
   const googleHandler = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
-      console.log("USER_EMAIL", auth?.currentUser?.photoURL);
+      const response = await signInWithPopup(auth, googleProvider);
+      console.log("Google auth response", response);
     } catch (err) {
       console.log("...error from google auth", err);
     }
@@ -57,7 +69,7 @@ const Auth = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={onSubmit}
+        onSubmit={signIn}
       >
         {(formik) => (
           <Form>
@@ -75,9 +87,10 @@ const Auth = () => {
           </Form>
         )}
       </Formik>
-      <Button className="buttons" onClick={signOutHandler}>
-        Sign out
-      </Button>
+      <div className="buttons">
+        New to Food World?
+        <label id="signUp">Sign up</label>
+      </div>
       <Button className="buttons" dormant={true} onClick={googleHandler}>
         Sign in with Google
       </Button>
@@ -85,4 +98,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default SignIn;

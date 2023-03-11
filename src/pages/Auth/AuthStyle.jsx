@@ -14,5 +14,14 @@ const AuthStyle = styled.div`
     max-width: 25rem;
     margin-bottom: 1rem;
   }
+  #signUp {
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  #signUp:hover {
+    text-decoration: underline;
+  }
 `;
 export default AuthStyle;

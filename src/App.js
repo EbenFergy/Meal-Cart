@@ -6,7 +6,7 @@ import MealProvider from "./Context_API/mealProvider";
 import RecipeApi from "./api/RecipeApi";
 import noView from "./assets/noView.gif";
 import Footer from "./Components/Footer/Footer";
-import Auth from "./pages/Auth/Auth";
+import SignIn from "./pages/Auth/SignIn";
 
 const App = () => {
   const [displayAuth, setDisplayAuth] = useState(true);
@@ -21,7 +21,7 @@ const App = () => {
       </NoView>
       <AppStyle>
         {displayAuth ? (
-          <Auth />
+          <SignIn />
         ) : (
           <MealProvider>
             <Header />
