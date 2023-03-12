@@ -1,8 +1,8 @@
 import React from "react";
 import { auth } from "../../config/firebase";
 
-const SingUp = () => {
+const SignUp = () => {
   return <div>SingUp</div>;
 };
 
-export default SingUp;
+export default SignUp;

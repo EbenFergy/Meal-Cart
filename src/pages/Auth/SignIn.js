@@ -56,6 +56,10 @@ const SignIn = () => {
     }
   };
 
+  const signUpHandler = () => {
+    dispatch(authActions.signUp());
+  };
+
   const signOutHandler = async () => {
     try {
       await signOut(auth);
@@ -87,7 +91,7 @@ const SignIn = () => {
           </Form>
         )}
       </Formik>
-      <div className="buttons">
+      <div className="buttons" onClick={signUpHandler}>
         New to Food World?
         <label id="signUp">Sign up</label>
       </div>
