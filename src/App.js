@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./config/firebase";
 import Header from "./Components/Header/Header";
 import { AppStyle, NoView } from "./AppStyle";
 import MealSection from "./Components/Meals/MealSection";
@@ -12,8 +14,6 @@ import { useSelector } from "react-redux";
 
 const App = () => {
   // const [displayAuth, setDisplayAuth] = useState(true);
-  const signedIn = useSelector((state) => state.authStatus.signedIn);
-  const signUp = useSelector((state) => state.authStatus.signUp);
 
   return (
     <>
@@ -24,16 +24,10 @@ const App = () => {
         <div>No view for smaller screens yet...</div>
       </NoView>
       <AppStyle>
-        {signedIn ? (
-          <MealProvider>
-            <Header />
-            <MealSection apiData={RecipeApi()} />
-          </MealProvider>
-        ) : signUp ? (
-          <SignUp />
-        ) : (
-          <SignIn />
-        )}
+        <MealProvider>
+          <Header />
+          <MealSection apiData={RecipeApi()} />
+        </MealProvider>
 
         <Footer />
       </AppStyle>

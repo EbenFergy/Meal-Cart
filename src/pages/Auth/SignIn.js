@@ -36,7 +36,6 @@ const SignIn = () => {
         values.email,
         values.password
       );
-
       dispatch(authActions.signedIn());
 
       console.log("email and password response", response);

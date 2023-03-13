@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const authState = {
   signedIn: false,
   signUp: false,
+  rrennder: false,
 };
 
 const auth = createSlice({
@@ -15,6 +16,10 @@ const auth = createSlice({
 
     signUp(state) {
       state.signUp = !state.signUp;
+    },
+
+    checkRender(state) {
+      state.rrender = !state.rrender;
     },
   },
 });
