@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./config/firebase";
 import Header from "./Components/Header/Header";
@@ -13,8 +13,19 @@ import SignUp from "./pages/Auth/SignUp";
 import { useSelector } from "react-redux";
 
 const App = () => {
-  // const [displayAuth, setDisplayAuth] = useState(true);
+  const cartList = useSelector((state) => state.cartList.cartList);
 
+  /*
+    send store items to database because 
+    it can't be done in the Redux Store
+  */
+
+  useEffect(() => {
+    fetch("https://foodapp-1dcca-default-rtdb.firebaseio.com/cartList.json", {
+      method: "PUT",
+      body: JSON.stringify(cartList),
+    });
+  }, [cartList]);
   return (
     <>
       <NoView>

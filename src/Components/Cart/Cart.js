@@ -16,7 +16,6 @@ export const Cart = ({ closeCart }) => {
   const [totalPrice, setTotalPrice] = useState(0.0);
 
   const cartList = useSelector((state) => state.cartList.cartList);
-  console.log("......cartlist redux baby", cartList);
 
   const dispatch = useDispatch();
 
