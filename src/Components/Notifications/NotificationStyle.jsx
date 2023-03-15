@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 const NotificationStyle = styled.div`
-  background-color: green;
+  background-color: ${({ status }) => {
+    if (status === "pending") return "#339cc6";
+    if (status === "success") return "green";
+    if (status === "failed") return "red";
+  }};
   position: relative;
   z-index: 100;
   padding: 1rem 2rem;
@@ -11,7 +15,7 @@ const NotificationStyle = styled.div`
 
   box-sizing: border-box;
 
-  #head {
+  #title {
     font-weight: 800;
     font-size: 1.1rem;
   }
