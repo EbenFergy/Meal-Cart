@@ -11,7 +11,7 @@ import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
 import { useSelector, useDispatch } from "react-redux";
 import Notification from "./Components/Notifications/Notification";
-import { UIActions } from "./Redux/slices/UI_slice";
+import { sendCartData } from "./Redux/actions/cart_actions";
 
 let sendRequest = false;
 const App = () => {
@@ -20,51 +20,14 @@ const App = () => {
     (state) => state.UIStatus.showNotification
   );
   const dispatch = useDispatch();
-  /*
-    send store items to database because 
-    it can't be done in the Redux Store
-  */
 
   useEffect(() => {
-    const sendCartToDB = async () => {
-      try {
-        dispatch(
-          UIActions.showNotification({
-            status: "pending",
-            title: "...sending",
-            message: "sending data to database",
-          })
-        );
-        const response = await fetch(
-          "https://foodapp-1dcca-default-rtdb.firebaseio.com/cartList.json",
-          {
-            method: "PUT",
-            body: JSON.stringify(cartList),
-          }
-        );
-
-        dispatch(
-          UIActions.showNotification({
-            status: "success",
-            title: "Success!",
-            message: "sent data successfully",
-          })
-        );
-      } catch (err) {
-        dispatch(
-          UIActions.showNotification({
-            status: "failed",
-            title: "Error!",
-            message: "sending data failed",
-          })
-        );
-      }
-    };
     if (sendRequest === false) {
       sendRequest = true;
       return;
     }
-    sendCartToDB();
+
+    dispatch(sendCartData(cartList));
   }, [cartList]);
   return (
     <>
