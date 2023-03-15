@@ -4,13 +4,13 @@ import { auth } from "./config/firebase";
 import Header from "./Components/Header/Header";
 import { AppStyle, NoView } from "./AppStyle";
 import MealSection from "./Components/Meals/MealSection";
-import MealProvider from "./Context_API/mealProvider";
 import RecipeApi from "./api/RecipeApi";
 import noView from "./assets/noView.gif";
 import Footer from "./Components/Footer/Footer";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
 import { useSelector } from "react-redux";
+import Notification from "./Components/Notifications/Notification";
 
 const App = () => {
   const cartList = useSelector((state) => state.cartList.cartList);
@@ -35,10 +35,11 @@ const App = () => {
         <div>No view for smaller screens yet...</div>
       </NoView>
       <AppStyle>
-        <MealProvider>
-          <Header />
-          <MealSection apiData={RecipeApi()} />
-        </MealProvider>
+        <div className="notificationCont">
+          <Notification />
+        </div>
+        <Header />
+        <MealSection apiData={RecipeApi()} />
 
         <Footer />
       </AppStyle>
