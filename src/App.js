@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./config/firebase";
+// import { onAuthStateChanged } from "firebase/auth";
+// import { auth } from "./config/firebase";
 import Header from "./Components/Header/Header";
 import { AppStyle, NoView } from "./AppStyle";
 import MealSection from "./Components/Meals/MealSection";
 import RecipeApi from "./api/RecipeApi";
 import noView from "./assets/noView.gif";
 import Footer from "./Components/Footer/Footer";
-import SignIn from "./pages/Auth/SignIn";
-import SignUp from "./pages/Auth/SignUp";
+// import SignIn from "./pages/Auth/SignIn";
+// import SignUp from "./pages/Auth/SignUp";
 import { useSelector, useDispatch } from "react-redux";
 import Notification from "./Components/Notifications/Notification";
 import { sendCartData, fetchCartData } from "./Redux/actions/cart_actions";
@@ -23,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchCartData());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (sendRequest === false) {
@@ -32,7 +32,7 @@ const App = () => {
     }
 
     dispatch(sendCartData(cartList));
-  }, [cartList]);
+  }, [cartList, dispatch]);
   return (
     <>
       <NoView>

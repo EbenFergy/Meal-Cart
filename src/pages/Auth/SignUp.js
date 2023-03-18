@@ -1,8 +1,8 @@
 import React from "react";
 import AuthStyle from "./AuthStyle";
 import FormikControl from "../../Components/Formik/FormikControl";
-import { useDispatch, useSelector } from "react-redux";
-import { authActions } from "../../Redux/slices/auth_slice";
+import { useSelector } from "react-redux";
+// import { authActions } from "../../Redux/slices/auth_slice";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { FormCont } from "../../Components/Formik/FormStyle";
@@ -11,12 +11,12 @@ import { auth, googleProvider } from "../../config/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithPopup,
-  signOut,
+  // signOut,
 } from "firebase/auth";
 
 const SignUp = () => {
   const authStatus = useSelector((state) => state.authStatus.signedIn);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const initialValues = {
     email: "",
     password: "",

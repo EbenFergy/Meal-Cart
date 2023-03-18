@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React from "react";
 import AuthStyle from "./AuthStyle";
 import FormikControl from "../../Components/Formik/FormikControl";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +11,7 @@ import { auth, googleProvider } from "../../config/firebase";
 import {
   signInWithEmailAndPassword,
   signInWithPopup,
-  signOut,
+  // signOut,
 } from "firebase/auth";
 
 const SignIn = () => {
@@ -59,13 +59,13 @@ const SignIn = () => {
     dispatch(authActions.signUp());
   };
 
-  const signOutHandler = async () => {
-    try {
-      await signOut(auth);
-    } catch (err) {
-      console.log("...sign out error", err);
-    }
-  };
+  // const signOutHandler = async () => {
+  //   try {
+  //     await signOut(auth);
+  //   } catch (err) {
+  //     console.log("...sign out error", err);
+  //   }
+  // };
 
   return (
     <AuthStyle>

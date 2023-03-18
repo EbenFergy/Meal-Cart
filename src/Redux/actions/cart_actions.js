@@ -1,15 +1,16 @@
 import { UIActions } from "../slices/UI_slice";
 import { cartListActions } from "../slices/cart_slice";
+import axios from "axios";
 
 export const fetchCartData = () => {
   return async (dispatch) => {
     try {
-      const response = await fetch(
+      const response = await axios.get(
         "https://foodapp-1dcca-default-rtdb.firebaseio.com/cartList.json"
       );
-
-      console.log("====fetched data", await response.json());
-      //   dispatch(cartListActions.addToCartList(data));
+      const data = response.data;
+      data && data.map((item) => dispatch(cartListActions.addToCartList(item)));
+      console.log("===== fetched data", data);
     } catch (err) {
       dispatch(
         UIActions.showNotification({
@@ -32,7 +33,7 @@ export const sendCartData = (cartList) => {
           message: "adding to cart",
         })
       );
-      const response = await fetch(
+      await fetch(
         "https://foodapp-1dcca-default-rtdb.firebaseio.com/cartList.json",
         {
           method: "PUT",
