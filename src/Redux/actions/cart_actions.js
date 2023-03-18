@@ -7,8 +7,8 @@ export const fetchCartData = () => {
       const response = await fetch(
         "https://foodapp-1dcca-default-rtdb.firebaseio.com/cartList.json"
       );
-      console.log("====fetched data", response);
-      //   const data = await response.json();
+
+      console.log("====fetched data", await response.json());
       //   dispatch(cartListActions.addToCartList(data));
     } catch (err) {
       dispatch(
