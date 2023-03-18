@@ -11,7 +11,7 @@ import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
 import { useSelector, useDispatch } from "react-redux";
 import Notification from "./Components/Notifications/Notification";
-import { sendCartData } from "./Redux/actions/cart_actions";
+import { sendCartData, fetchCartData } from "./Redux/actions/cart_actions";
 
 let sendRequest = false;
 const App = () => {
@@ -20,6 +20,10 @@ const App = () => {
     (state) => state.UIStatus.showNotification
   );
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCartData());
+  }, []);
 
   useEffect(() => {
     if (sendRequest === false) {
