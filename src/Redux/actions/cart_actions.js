@@ -2,6 +2,10 @@ import { UIActions } from "../slices/UI_slice";
 import { cartListActions } from "../slices/cart_slice";
 import axios from "axios";
 
+/*===================================================
+        fetch cart Data from database on mount
+=====================================================*/
+
 export const fetchCartData = () => {
   return async (dispatch) => {
     try {
@@ -9,7 +13,8 @@ export const fetchCartData = () => {
         "https://foodapp-1dcca-default-rtdb.firebaseio.com/cartList.json"
       );
       const data = response.data;
-      data && data.map((item) => dispatch(cartListActions.addToCartList(item)));
+      //   data && data.map((item) => dispatch(cartListActions.initialiseCartList(item)));
+      dispatch(cartListActions.initialiseCartList(data));
       console.log("===== fetched data", data);
     } catch (err) {
       dispatch(
@@ -23,31 +28,39 @@ export const fetchCartData = () => {
   };
 };
 
+/*===================================================
+            send cart Data to database
+=====================================================*/
+let firstTimeLoad = false;
+
 export const sendCartData = (cartList) => {
   return async (dispatch) => {
     try {
-      dispatch(
-        UIActions.showNotification({
-          status: "pending",
-          title: "...sending",
-          message: "adding to cart",
-        })
-      );
-      await fetch(
-        "https://foodapp-1dcca-default-rtdb.firebaseio.com/cartList.json",
-        {
-          method: "PUT",
-          body: JSON.stringify(cartList),
-        }
-      );
+      firstTimeLoad &&
+        dispatch(
+          UIActions.showNotification({
+            status: "pending",
+            title: "...sending",
+            message: "adding to cart",
+          })
+        );
 
-      dispatch(
-        UIActions.showNotification({
-          status: "success",
-          title: "Success!",
-          message: "added to cart",
-        })
-      );
+      const config = {
+        url: "https://foodapp-1dcca-default-rtdb.firebaseio.com/cartList.json",
+        method: "PUT",
+        data: cartList,
+      };
+      await axios(config);
+
+      firstTimeLoad &&
+        dispatch(
+          UIActions.showNotification({
+            status: "success",
+            title: "Success!",
+            message: "added to cart",
+          })
+        );
+      firstTimeLoad = true;
     } catch (err) {
       dispatch(
         UIActions.showNotification({
