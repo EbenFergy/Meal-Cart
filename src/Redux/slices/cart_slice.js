@@ -40,6 +40,9 @@ const cartList = createSlice({
 
     initialiseCartList(state, action) {
       if (action.payload) state.cartList = [...action.payload];
+      else {
+        state.cartList = [];
+      }
     },
   },
 });
