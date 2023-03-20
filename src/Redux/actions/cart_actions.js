@@ -61,6 +61,9 @@ export const sendCartData = (cartList) => {
           })
         );
       firstTimeLoad = true;
+      setTimeout(() => {
+        dispatch(UIActions.showNotification(null));
+      }, 2000);
     } catch (err) {
       dispatch(
         UIActions.showNotification({

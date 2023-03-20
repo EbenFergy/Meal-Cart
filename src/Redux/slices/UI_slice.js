@@ -9,11 +9,15 @@ const UI = createSlice({
   initialState,
   reducers: {
     showNotification(state, action) {
-      state.showNotification = {
-        status: action.payload.status,
-        title: action.payload.title,
-        message: action.payload.message,
-      };
+      if (action.payload)
+        state.showNotification = {
+          status: action.payload.status,
+          title: action.payload.title,
+          message: action.payload.message,
+        };
+      else {
+        state.showNotification = null;
+      }
     },
   },
 });
