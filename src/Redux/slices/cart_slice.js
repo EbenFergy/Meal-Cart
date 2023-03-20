@@ -39,7 +39,7 @@ const cartList = createSlice({
     },
 
     initialiseCartList(state, action) {
-      state.cartList = [...action.payload];
+      if (action.payload) state.cartList = [...action.payload];
     },
   },
 });
