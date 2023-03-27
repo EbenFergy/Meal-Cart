@@ -35,7 +35,9 @@ const App = () => {
     dispatch(sendCartData(cartList));
   }, [cartList, dispatch]);
 
-  // const
+  const { isLoading, isSuccess, isError, data } = useGetFoodsQuery();
+
+  console.log("data from useGetFoodsQuery", data);
   return (
     <>
       <NoView>
