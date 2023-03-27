@@ -5,6 +5,7 @@ import Header from "./Components/Header/Header";
 import { AppStyle, NoView } from "./AppStyle";
 import MealSection from "./Components/Meals/MealSection";
 import RecipeApi from "./api/RecipeApi";
+import { useGetFoodsQuery } from "./Redux/slices/foodApiSlice";
 import noView from "./assets/noView.gif";
 import Footer from "./Components/Footer/Footer";
 // import SignIn from "./pages/Auth/SignIn";
@@ -33,6 +34,8 @@ const App = () => {
 
     dispatch(sendCartData(cartList));
   }, [cartList, dispatch]);
+
+  // const
   return (
     <>
       <NoView>

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const apiSlice = createApi({
+export const cartApiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://foodapp-1dcca-default-rtdb.firebaseio.com",
@@ -10,4 +10,4 @@ const apiSlice = createApi({
   }),
 });
 
-export const { useGetCartListQuery } = apiSlice;
+export const { useGetCartListQuery } = cartApiSlice;
