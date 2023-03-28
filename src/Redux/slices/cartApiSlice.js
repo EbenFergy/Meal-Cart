@@ -7,7 +7,14 @@ export const cartApiSlice = createApi({
   }),
   endpoints: (builder) => ({
     getCartList: builder.query({ query: () => "/cartList.json" }),
+    addToCartList: builder.mutation({
+      query: (cartList) => ({
+        url: "/cartList.json",
+        method: "PUT",
+        body: cartList,
+      }),
+    }),
   }),
 });
 
-export const { useGetCartListQuery } = cartApiSlice;
+export const { useGetCartListQuery, useAddToCartListMutation } = cartApiSlice;

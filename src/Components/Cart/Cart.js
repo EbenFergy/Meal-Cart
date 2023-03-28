@@ -7,6 +7,7 @@ import emptycart from "../../assets/empty-cart2.gif";
 import CartCounter from "../CartCounter/CartCounter";
 import { useSelector, useDispatch } from "react-redux";
 import { cartListActions } from "../../Redux/slices/cart_slice";
+import { useGetCartListQuery } from "../../Redux/slices/cartApiSlice";
 
 export const BackDropper = ({ closeCart }) => {
   return <BackDrop onClick={closeCart}></BackDrop>;
@@ -18,6 +19,15 @@ export const Cart = ({ closeCart }) => {
   const cartList = useSelector((state) => state.cartList.cartList);
 
   const dispatch = useDispatch();
+
+  const {
+    isLoading,
+    isError,
+    isSuccess,
+    isFetching,
+    data: cartLList,
+  } = useGetCartListQuery();
+  console.log("===== cartlist from RTKQ", cartLList);
 
   // reducer function for cartPrice
   useEffect(() => {

@@ -11,9 +11,13 @@ const store = configureStore({
     authStatus: authReducer,
     UIStatus: UIReducer,
     [foodApiSlice.reducerPath]: foodApiSlice.reducer,
+    [cartApiSlice.reducerPath]: cartApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(foodApiSlice.middleware),
+    getDefaultMiddleware().concat(
+      foodApiSlice.middleware,
+      cartApiSlice.middleware
+    ),
 });
 
 export default store;
