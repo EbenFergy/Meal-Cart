@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import Header from "./Components/Header/Header";
 import { AppStyle, NoView } from "./AppStyle";
 import MealSection from "./Components/Meals/MealSection";
-import RecipeApi from "./api/RecipeApi";
 import { useGetFoodsQuery } from "./Redux/slices/foodApiSlice";
 import noView from "./assets/noView.gif";
 import Footer from "./Components/Footer/Footer";
@@ -13,6 +12,7 @@ import Footer from "./Components/Footer/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import Notification from "./Components/Notifications/Notification";
 import { sendCartData, fetchCartData } from "./Redux/actions/cart_actions";
+import Spinner from "./Components/Spinner/Spinner";
 
 let sendRequest = false;
 const App = () => {
@@ -35,9 +35,14 @@ const App = () => {
     dispatch(sendCartData(cartList));
   }, [cartList, dispatch]);
 
-  const { isLoading, isSuccess, isError, data } = useGetFoodsQuery();
+  const {
+    isLoading,
+    isSuccess,
+    isError,
+    data: foodApiData,
+  } = useGetFoodsQuery();
 
-  console.log("data from useGetFoodsQuery", data);
+  isSuccess && console.log("data from useGetFoodsQuery", foodApiData.hits);
   return (
     <>
       <NoView>
@@ -57,8 +62,8 @@ const App = () => {
           </div>
         )}
         <Header />
-        <MealSection apiData={RecipeApi()} />
-
+        {isLoading && <Spinner />}
+        {isSuccess && <MealSection apiData={foodApiData.hits} />}
         <Footer />
       </AppStyle>
     </>

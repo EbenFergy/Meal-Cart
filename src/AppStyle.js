@@ -6,6 +6,11 @@ export const AppStyle = styled.div`
   }
   background-color: rgba(14, 17, 26, 1);
   color: #ffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   /* border: 2px solid blue; */
   width: 100vw;
 
