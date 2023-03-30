@@ -11,7 +11,7 @@ export const cartApiSlice = createApi({
       query: (cartList) => ({
         url: "/cartList.json",
         method: "PUT",
-        body: cartList,
+        body: [cartList],
       }),
     }),
   }),

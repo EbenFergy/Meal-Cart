@@ -5,7 +5,11 @@ const Footer = () => {
   return (
     <FooterStyle>
       <div className="footerIcons">
-        <a href="https://github.com/EbenFergy">
+        <a
+          href="https://github.com/EbenFergy"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           <svg
             width="25"
             height="25"
@@ -20,7 +24,11 @@ const Footer = () => {
           </svg>
         </a>
 
-        <a href="https://www.linkedin.com/in/osas-ferguson/">
+        <a
+          href="https://www.linkedin.com/in/osas-ferguson/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           <svg
             width="23"
             height="22"
@@ -34,7 +42,11 @@ const Footer = () => {
             />
           </svg>
         </a>
-        <a href="https://www.instagram.com/ferguson_osas/">
+        <a
+          href="https://www.instagram.com/osas_ferguson/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           <svg
             width="22"
             height="22"

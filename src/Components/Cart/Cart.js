@@ -16,7 +16,7 @@ export const BackDropper = ({ closeCart }) => {
 export const Cart = ({ closeCart }) => {
   const [totalPrice, setTotalPrice] = useState(0.0);
 
-  const cartList = useSelector((state) => state.cartList.cartList);
+  // const cartList = useSelector((state) => state.cartList.cartList);
 
   const dispatch = useDispatch();
 
@@ -25,21 +25,25 @@ export const Cart = ({ closeCart }) => {
     isError,
     isSuccess,
     isFetching,
-    data: cartLList,
+    data: cartList,
   } = useGetCartListQuery();
-  console.log("===== cartlist from RTKQ", cartLList);
+
+  // isSuccess && console.log("=========cartList from createAPI", cartLList);
+  console.log("=========cartList from redux", cartList);
 
   // reducer function for cartPrice
   useEffect(() => {
-    const price = cartList.reduce((accumulator, item) => {
-      return item.price * item.quantity + accumulator;
-    }, 0);
-
-    setTotalPrice(price);
+    if (cartList) {
+      const price = cartList.reduce((accumulator, item) => {
+        return item.price * item.quantity + accumulator;
+      }, 0);
+      setTotalPrice(price);
+    }
   }, [cartList]);
   console.log("current total price", totalPrice);
 
-  const cartListLength = _.size(cartList);
+  // const cartListLength = _.size(cartList);
+  const cartListLength = cartList.length;
 
   const removeHandler = (id) => {
     dispatch(cartListActions.removeFromCartList(id));
@@ -49,7 +53,7 @@ export const Cart = ({ closeCart }) => {
       <CartStyle>
         <div className="header">Cart Items</div>
         <div className="cartitems">
-          {cartListLength > 0 ? (
+          {isSuccess && cartListLength > 0 ? (
             cartList.map((item) => {
               return (
                 <div key={item.price} className="eachItem">

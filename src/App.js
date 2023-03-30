@@ -5,9 +5,9 @@ import Header from "./Components/Header/Header";
 import { AppStyle, NoView } from "./AppStyle";
 import MealSection from "./Components/Meals/MealSection";
 import { useGetFoodsQuery } from "./Redux/slices/foodApiSlice";
+import { useGetCartListQuery } from "./Redux/slices/cartApiSlice";
 import noView from "./assets/noView.gif";
 import Footer from "./Components/Footer/Footer";
-import RecipeApi from "./api/RecipeApi";
 // import SignIn from "./pages/Auth/SignIn";
 // import SignUp from "./pages/Auth/SignUp";
 import { useSelector, useDispatch } from "react-redux";
@@ -42,6 +42,9 @@ const App = () => {
     isError,
     data: foodApiData,
   } = useGetFoodsQuery();
+
+  const { data: gspot } = useGetCartListQuery();
+  console.log("$$$$$$$ GSPOT", gspot);
 
   isSuccess && console.log("data from useGetFoodsQuery", foodApiData.hits);
   return (

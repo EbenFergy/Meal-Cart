@@ -12,6 +12,7 @@ export const fetchCartData = () => {
       const response = await axios.get(
         "https://foodapp-1dcca-default-rtdb.firebaseio.com/cartList.json"
       );
+      console.log("******* response from cart_actions", response);
       const data = response.data;
       //   data && data.map((item) => dispatch(cartListActions.initialiseCartList(item)));
       dispatch(cartListActions.initialiseCartList(data));

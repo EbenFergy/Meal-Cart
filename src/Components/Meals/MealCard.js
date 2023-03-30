@@ -3,11 +3,15 @@ import Button from "../ReUsables/Button";
 import InputStyle from "../ReUsables/InputStyle";
 import { useDispatch } from "react-redux";
 import { cartListActions } from "../../Redux/slices/cart_slice";
+import { useAddToCartListMutation } from "../../Redux/slices/cartApiSlice";
+import { UIActions } from "../../Redux/slices/UI_slice";
 
 const MealCard = ({ calories, image, label, id }) => {
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
+
+  const [addToCartList] = useAddToCartListMutation();
 
   const quantityHandler = (e) => {
     setQuantity(parseInt(e.target.value));
@@ -15,7 +19,7 @@ const MealCard = ({ calories, image, label, id }) => {
 
   const price = parseInt((calories / 98).toFixed(2));
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     const mealDetails = {
       quantity: quantity,
@@ -31,8 +35,20 @@ const MealCard = ({ calories, image, label, id }) => {
 
     // if an entry was made, send that entry to the cart context handler component
     // mealDetailsLength > 0 && addToCartList(mealDetails);
-    mealDetailsLength > 0 &&
-      dispatch(cartListActions.addToCartList(mealDetails));
+
+    try {
+      mealDetailsLength > 0 && (await addToCartList(mealDetails));
+    } catch (err) {
+      dispatch(
+        UIActions.showNotification({
+          status: "failed",
+          title: "Error!",
+          message: "sending data failed",
+        })
+      );
+    }
+    // mealDetailsLength > 0 &&
+    //   dispatch(cartListActions.addToCartList(mealDetails));
   };
 
   return (
