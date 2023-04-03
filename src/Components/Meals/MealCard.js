@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "../ReUsables/Button";
 import InputStyle from "../ReUsables/InputStyle";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartListActions } from "../../Redux/slices/cart_slice";
 import { useAddToCartListMutation } from "../../Redux/slices/cartApiSlice";
 import { UIActions } from "../../Redux/slices/UI_slice";
@@ -9,6 +9,7 @@ import { UIActions } from "../../Redux/slices/UI_slice";
 const MealCard = ({ calories, image, label, id }) => {
   const [quantity, setQuantity] = useState(1);
 
+  const cartList = useSelector((state) => state.cartList.cartList);
   const dispatch = useDispatch();
 
   const [addToCartList] = useAddToCartListMutation();
@@ -37,7 +38,10 @@ const MealCard = ({ calories, image, label, id }) => {
     // mealDetailsLength > 0 && addToCartList(mealDetails);
 
     try {
-      mealDetailsLength > 0 && (await addToCartList(mealDetails));
+      mealDetailsLength > 0 &&
+        (await addToCartList([...cartList, mealDetails]));
+
+      mealDetails > 0 && dispatch(cartListActions());
     } catch (err) {
       dispatch(
         UIActions.showNotification({

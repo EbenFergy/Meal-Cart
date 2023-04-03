@@ -33,7 +33,7 @@ export const Cart = ({ closeCart }) => {
 
   // reducer function for cartPrice
   useEffect(() => {
-    if (cartList) {
+    if (isSuccess && cartList) {
       const price = cartList.reduce((accumulator, item) => {
         return item.price * item.quantity + accumulator;
       }, 0);

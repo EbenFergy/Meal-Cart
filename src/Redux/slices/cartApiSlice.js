@@ -5,14 +5,20 @@ export const cartApiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://foodapp-1dcca-default-rtdb.firebaseio.com",
   }),
+  tagTypes: ["LIST"],
   endpoints: (builder) => ({
-    getCartList: builder.query({ query: () => "/cartList.json" }),
+    getCartList: builder.query({
+      query: () => "/cartList.json",
+      // transformResponse: (res) => [res],
+      providesTags: ["LIST"],
+    }),
     addToCartList: builder.mutation({
       query: (cartList) => ({
-        url: "/cartList.json",
-        method: "PUT",
-        body: [cartList],
+        url: `/cartList.json/`,
+        method: "POST",
+        body: cartList,
       }),
+      invalidatesTags: ["LIST"],
     }),
   }),
 });
