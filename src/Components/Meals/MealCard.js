@@ -38,8 +38,7 @@ const MealCard = ({ calories, image, label, id }) => {
     // mealDetailsLength > 0 && addToCartList(mealDetails);
 
     try {
-      mealDetailsLength > 0 &&
-        (await addToCartList([...cartList, mealDetails]));
+      mealDetailsLength > 0 && (await addToCartList(mealDetails));
 
       mealDetails > 0 && dispatch(cartListActions());
     } catch (err) {

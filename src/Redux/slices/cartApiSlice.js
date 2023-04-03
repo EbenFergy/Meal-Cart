@@ -9,7 +9,7 @@ export const cartApiSlice = createApi({
   endpoints: (builder) => ({
     getCartList: builder.query({
       query: () => "/cartList.json",
-      // transformResponse: (res) => [res],
+      transformResponse: (res) => Object.values(res),
       providesTags: ["LIST"],
     }),
     addToCartList: builder.mutation({
@@ -17,6 +17,14 @@ export const cartApiSlice = createApi({
         url: `/cartList.json/`,
         method: "POST",
         body: cartList,
+      }),
+      invalidatesTags: ["LIST"],
+    }),
+    deleteFromCartList: builder.mutation({
+      query: (item) => ({
+        url: `cartList.json`,
+        method: "DELETE",
+        body: item,
       }),
       invalidatesTags: ["LIST"],
     }),

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // create cartList initialState
-const cartInitialState = { cartList: [] };
+const cartInitialState = { cartList: [], cartLength: 0 };
 
 const cartList = createSlice({
   name: "CART_LIST",
@@ -36,13 +36,6 @@ const cartList = createSlice({
         : (state.cartList = state.cartList.filter(
             (item) => item.id !== action.payload
           ));
-    },
-
-    initialiseCartList(state, action) {
-      if (action.payload) state.cartList = [...action.payload];
-      else {
-        state.cartList = [];
-      }
     },
   },
 });

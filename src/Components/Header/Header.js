@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useGetCartListQuery } from "../../Redux/slices/cartApiSlice";
 import HeaderStyle from "./HeaderStyle";
 import CartImg from "../../assets/cart-img.svg";
 import Button from "../ReUsables/Button";
@@ -12,19 +12,13 @@ import { Cart, BackDropper } from "../Cart/Cart";
 const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
 
-  const cartList = useSelector((state) => state.cartList.cartList);
+  const { data: cartList, isSuccess } = useGetCartListQuery();
 
-  console.log("cartlist in header", cartList);
+  const viewCartHandler = () => setCartOpen(true);
 
-  const viewCartHandler = () => {
-    setCartOpen(true);
-  };
+  const closeCart = () => setCartOpen(false);
 
-  const closeCart = () => {
-    setCartOpen(false);
-  };
-
-  let cartListLength = cartList.length;
+  let cartListLength = isSuccess && cartList.length;
 
   return (
     <HeaderStyle>

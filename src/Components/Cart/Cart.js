@@ -16,8 +16,6 @@ export const BackDropper = ({ closeCart }) => {
 export const Cart = ({ closeCart }) => {
   const [totalPrice, setTotalPrice] = useState(0.0);
 
-  // const cartList = useSelector((state) => state.cartList.cartList);
-
   const dispatch = useDispatch();
 
   const {
@@ -28,9 +26,6 @@ export const Cart = ({ closeCart }) => {
     data: cartList,
   } = useGetCartListQuery();
 
-  // isSuccess && console.log("=========cartList from createAPI", cartLList);
-  console.log("=========cartList from redux", cartList);
-
   // reducer function for cartPrice
   useEffect(() => {
     if (isSuccess && cartList) {
@@ -40,14 +35,10 @@ export const Cart = ({ closeCart }) => {
       setTotalPrice(price);
     }
   }, [cartList]);
-  console.log("current total price", totalPrice);
 
-  // const cartListLength = _.size(cartList);
-  const cartListLength = cartList.length;
+  const cartListLength = isSuccess && cartList.length;
 
-  const removeHandler = (id) => {
-    dispatch(cartListActions.removeFromCartList(id));
-  };
+  const removeHandler = (id) => {};
   return (
     <ModalStyle>
       <CartStyle>

@@ -43,9 +43,6 @@ const App = () => {
     data: foodApiData,
   } = useGetFoodsQuery();
 
-  const { data: gspot, isSuccess: SUCCESS_CARTLIST } = useGetCartListQuery();
-  SUCCESS_CARTLIST && console.log("$$$$$$$ GSPOT", [gspot], typeof gspot);
-
   isSuccess && console.log("data from useGetFoodsQuery", foodApiData.hits);
   return (
     <>
