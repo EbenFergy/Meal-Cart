@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import CartStyle from "./CartStyle";
 import { BackDrop, ModalStyle } from "../ReUsables/Modal/ModalStyle";
 import Button from "../ReUsables/Button";
-import _ from "lodash";
+// import _ from "lodash";
 import emptycart from "../../assets/empty-cart2.gif";
 import CartCounter from "../CartCounter/CartCounter";
 import { useDispatch } from "react-redux";
 import { UIActions } from "../../Redux/slices/UI_slice";
+import Spinner from "../Spinner/Spinner";
 import {
   useGetCartListQuery,
   useDeleteFromCartListMutation,
@@ -21,13 +22,7 @@ export const Cart = ({ closeCart }) => {
 
   const dispatch = useDispatch();
 
-  const {
-    isLoading,
-    isError,
-    isSuccess,
-    isFetching,
-    data: cartList,
-  } = useGetCartListQuery();
+  const { isLoading, isSuccess, data: cartList } = useGetCartListQuery();
 
   const [deleteFromCartList] = useDeleteFromCartListMutation();
 
@@ -39,7 +34,7 @@ export const Cart = ({ closeCart }) => {
       }, 0);
       setTotalPrice(price);
     }
-  }, [cartList]);
+  }, [cartList, isSuccess]);
 
   const cartListLength = isSuccess && cartList.length;
 
@@ -82,6 +77,7 @@ export const Cart = ({ closeCart }) => {
       <CartStyle>
         <div className="header">Cart Items</div>
         <div className="cartitems">
+          {isLoading && <Spinner />}
           {isSuccess && cartListLength > 0 ? (
             cartList.map((item) => {
               return (

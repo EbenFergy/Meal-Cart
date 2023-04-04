@@ -14,12 +14,7 @@ import { useSelector } from "react-redux";
 import Notification from "./Components/Notifications/Notification";
 
 const App = () => {
-  const {
-    isLoading,
-    isSuccess,
-    isError,
-    data: foodApiData,
-  } = useGetFoodsQuery();
+  const { isLoading, isSuccess, data: foodApiData } = useGetFoodsQuery();
 
   const showNotification = useSelector(
     (state) => state.UIStatus.showNotification

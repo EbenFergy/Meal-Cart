@@ -7,7 +7,6 @@ import leaves from "../../assets/leaves.png";
 import GlassCard from "../ReUsables/GlassCard";
 import ReactDOM from "react-dom";
 import { Cart, BackDropper } from "../Cart/Cart";
-// import Notification from "../Notifications/Notification";
 
 const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
@@ -21,7 +20,7 @@ const Header = () => {
 
   useEffect(() => {
     isSuccess && setCartListLength(cartList.length);
-  }, [cartList]);
+  }, [cartList, isSuccess]);
 
   return (
     <HeaderStyle>
