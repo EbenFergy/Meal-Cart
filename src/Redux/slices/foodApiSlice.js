@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 
-const API_ID = "306b93f3";
-const API_KEY = "e14838727cbc8f3b6414302c7fe1bfaa";
+const API_ID = process.env.REACT_APP_FOOD_API_ID;
+const API_KEY = process.env.REACT_APP_FOOD_API_KEY;
 
 export const foodApiSlice = createApi({
   reducerPath: "foodapi",

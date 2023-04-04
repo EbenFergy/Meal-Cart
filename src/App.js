@@ -20,7 +20,6 @@ const App = () => {
     (state) => state.UIStatus.showNotification
   );
 
-  console.log(typeof showNotification, "...showing note");
   return (
     <>
       <NoView>
