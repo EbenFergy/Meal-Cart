@@ -3,16 +3,55 @@ import Button from "../ReUsables/Button";
 import CartCounterStyle from "./CartCounterStyle";
 import { useDispatch } from "react-redux";
 import { cartListActions } from "../../Redux/slices/cart_slice";
+import {
+  useGetCartListQuery,
+  useAddQuantityMutation,
+} from "../../Redux/slices/cartApiSlice";
+import { UIActions } from "../../Redux/slices/UI_slice";
 
 const CartCounter = ({ id, quantity }) => {
   const dispatch = useDispatch();
+  const { isSuccess, data: cartList } = useGetCartListQuery();
+  const [addQuantity] = useAddQuantityMutation();
 
-  const decrement = () => {
-    dispatch(cartListActions.reduceQuantity(id));
+  let newList;
+  if (isSuccess) {
+    newList = JSON.parse(JSON.stringify(cartList));
+  }
+  let itemExist = newList.find((item) => item.id === id);
+
+  const decrement = async () => {
+    try {
+      if (itemExist) {
+        itemExist.quantity -= 1;
+        await addQuantity(newList);
+      }
+    } catch (err) {
+      dispatch(
+        UIActions.showNotification({
+          status: "failed",
+          title: "Error!",
+          message: "sending data failed",
+        })
+      );
+    }
   };
 
-  const increment = () => {
-    dispatch(cartListActions.addQuantity(id));
+  const increment = async () => {
+    try {
+      if (itemExist) {
+        itemExist.quantity += 1;
+        await addQuantity(newList);
+      }
+    } catch (err) {
+      dispatch(
+        UIActions.showNotification({
+          status: "failed",
+          title: "Error!",
+          message: "sending data failed",
+        })
+      );
+    }
   };
 
   return (

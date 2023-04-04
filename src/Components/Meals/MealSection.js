@@ -35,36 +35,7 @@ const MealSection = ({ apiData }) => {
     setFilterParams(filtered);
   };
 
-  // const filtered = (country) => {
-  //   return apiData.filter(({ recipe }) => recipe.cuisineType[0] === country);
-  // };
-  //   console.log("filterfnctn", filtered(CountryNames[2]));
   return (
-    // <MealWrapperStyle>
-    //   {CountryNames.map((eachCountry) => {
-    //     return (
-    //       filtered(eachCountry).length > 0 && (
-    //         <div key={eachCountry}>
-    //           <div className="countryNames">{eachCountry}</div>
-    //           <MealStyle>
-    //             {filtered(eachCountry).map(({ recipe }) => {
-    //               return (
-    //                 <MealCard
-    //                   key={recipe.uri}
-    //                   calories={recipe.calories}
-    //                   image={recipe.image}
-    //                   label={recipe.label}
-    //                   id={recipe.uri}
-    //                 />
-    //               );
-    //             })}
-    //           </MealStyle>
-    //         </div>
-    //       )
-    //     );
-    //   })}
-    // </MealWrapperStyle>
-
     <MealWrapperStyle>
       <div className="filterCont">
         <Filter

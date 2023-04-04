@@ -5,9 +5,12 @@ import Button from "../ReUsables/Button";
 import _ from "lodash";
 import emptycart from "../../assets/empty-cart2.gif";
 import CartCounter from "../CartCounter/CartCounter";
-import { useSelector, useDispatch } from "react-redux";
-import { cartListActions } from "../../Redux/slices/cart_slice";
-import { useGetCartListQuery } from "../../Redux/slices/cartApiSlice";
+import { useDispatch } from "react-redux";
+import { UIActions } from "../../Redux/slices/UI_slice";
+import {
+  useGetCartListQuery,
+  useDeleteFromCartListMutation,
+} from "../../Redux/slices/cartApiSlice";
 
 export const BackDropper = ({ closeCart }) => {
   return <BackDrop onClick={closeCart}></BackDrop>;
@@ -26,6 +29,8 @@ export const Cart = ({ closeCart }) => {
     data: cartList,
   } = useGetCartListQuery();
 
+  const [deleteFromCartList] = useDeleteFromCartListMutation();
+
   // reducer function for cartPrice
   useEffect(() => {
     if (isSuccess && cartList) {
@@ -38,7 +43,40 @@ export const Cart = ({ closeCart }) => {
 
   const cartListLength = isSuccess && cartList.length;
 
-  const removeHandler = (id) => {};
+  const removeHandler = async (id) => {
+    try {
+      dispatch(
+        UIActions.showNotification({
+          status: "pending",
+          title: "removing!",
+          message: "removing item from cart",
+        })
+      );
+      const newCartList = JSON.parse(JSON.stringify(cartList));
+      let newList = newCartList.filter((item) => item.id !== id);
+      await deleteFromCartList(newList);
+
+      dispatch(
+        UIActions.showNotification({
+          status: "success",
+          title: "removed!",
+          message: "removed item from cart",
+        })
+      );
+
+      setTimeout(() => {
+        dispatch(UIActions.showNotification(null));
+      }, 2000);
+    } catch (err) {
+      dispatch(
+        UIActions.showNotification({
+          status: "failed",
+          title: "Error!",
+          message: "couldn't remove item from cart",
+        })
+      );
+    }
+  };
   return (
     <ModalStyle>
       <CartStyle>

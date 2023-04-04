@@ -1,41 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 // import { onAuthStateChanged } from "firebase/auth";
 // import { auth } from "./config/firebase";
 import Header from "./Components/Header/Header";
 import { AppStyle, NoView } from "./AppStyle";
 import MealSection from "./Components/Meals/MealSection";
 import { useGetFoodsQuery } from "./Redux/slices/foodApiSlice";
-import { useGetCartListQuery } from "./Redux/slices/cartApiSlice";
 import noView from "./assets/noView.gif";
 import Footer from "./Components/Footer/Footer";
 // import SignIn from "./pages/Auth/SignIn";
 // import SignUp from "./pages/Auth/SignUp";
-import { useSelector, useDispatch } from "react-redux";
-import Notification from "./Components/Notifications/Notification";
-import { sendCartData, fetchCartData } from "./Redux/actions/cart_actions";
 import Spinner from "./Components/Spinner/Spinner";
+import { useSelector } from "react-redux";
+import Notification from "./Components/Notifications/Notification";
 
-let sendRequest = false;
 const App = () => {
-  const cartList = useSelector((state) => state.cartList.cartList);
-  const showNotification = useSelector(
-    (state) => state.UIStatus.showNotification
-  );
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCartData());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (sendRequest === false) {
-      sendRequest = true;
-      return;
-    }
-
-    dispatch(sendCartData(cartList));
-  }, [cartList, dispatch]);
-
   const {
     isLoading,
     isSuccess,
@@ -43,7 +21,11 @@ const App = () => {
     data: foodApiData,
   } = useGetFoodsQuery();
 
-  isSuccess && console.log("data from useGetFoodsQuery", foodApiData.hits);
+  const showNotification = useSelector(
+    (state) => state.UIStatus.showNotification
+  );
+
+  console.log(typeof showNotification, "...showing note");
   return (
     <>
       <NoView>
@@ -53,18 +35,19 @@ const App = () => {
         <div>No view for smaller screens yet...</div>
       </NoView>
       <AppStyle>
-        {showNotification && (
-          <div className="notificationCont">
+        <Header />
+        {isLoading && <Spinner />}
+        {isSuccess && <MealSection apiData={foodApiData.hits} />}
+        <div className="notificationCont">
+          {showNotification && (
             <Notification
               status={showNotification.status}
               title={showNotification.title}
               message={showNotification.message}
             />
-          </div>
-        )}
-        <Header />
-        {isLoading && <Spinner />}
-        {isSuccess && <MealSection apiData={foodApiData.hits} />}
+          )}
+        </div>
+
         <Footer />
       </AppStyle>
     </>

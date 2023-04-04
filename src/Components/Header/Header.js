@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGetCartListQuery } from "../../Redux/slices/cartApiSlice";
 import HeaderStyle from "./HeaderStyle";
 import CartImg from "../../assets/cart-img.svg";
@@ -11,6 +11,7 @@ import { Cart, BackDropper } from "../Cart/Cart";
 
 const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
+  const [cartListLength, setCartListLength] = useState(0);
 
   const { data: cartList, isSuccess } = useGetCartListQuery();
 
@@ -18,7 +19,9 @@ const Header = () => {
 
   const closeCart = () => setCartOpen(false);
 
-  let cartListLength = isSuccess && cartList.length;
+  useEffect(() => {
+    isSuccess && setCartListLength(cartList.length);
+  }, [cartList]);
 
   return (
     <HeaderStyle>

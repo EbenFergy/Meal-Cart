@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import Button from "../ReUsables/Button";
 import InputStyle from "../ReUsables/InputStyle";
 import { useDispatch, useSelector } from "react-redux";
-import { cartListActions } from "../../Redux/slices/cart_slice";
-import { useAddToCartListMutation } from "../../Redux/slices/cartApiSlice";
+import {
+  useAddToCartListMutation,
+  useGetCartListQuery,
+  useAddQuantityMutation,
+} from "../../Redux/slices/cartApiSlice";
 import { UIActions } from "../../Redux/slices/UI_slice";
 
 const MealCard = ({ calories, image, label, id }) => {
   const [quantity, setQuantity] = useState(1);
 
-  const cartList = useSelector((state) => state.cartList.cartList);
   const dispatch = useDispatch();
 
   const [addToCartList] = useAddToCartListMutation();
+  const [addQuantity] = useAddQuantityMutation();
+  const { data: cartList, isSuccess } = useGetCartListQuery();
 
   const quantityHandler = (e) => {
     setQuantity(parseInt(e.target.value));
@@ -22,6 +26,15 @@ const MealCard = ({ calories, image, label, id }) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    dispatch(
+      UIActions.showNotification({
+        status: "pending",
+        title: "Sending!",
+        message: "adding to cart",
+      })
+    );
+
     const mealDetails = {
       quantity: quantity,
       name: label,
@@ -32,26 +45,45 @@ const MealCard = ({ calories, image, label, id }) => {
 
     // confirm that an entry was made
     const mealDetailsLength = Object.keys(mealDetails).length;
-    console.log("mealDetailsLength", mealDetailsLength);
 
-    // if an entry was made, send that entry to the cart context handler component
-    // mealDetailsLength > 0 && addToCartList(mealDetails);
+    // if an entry was made, send that entry
+    // check if it exists in cartList
 
     try {
-      mealDetailsLength > 0 && (await addToCartList(mealDetails));
+      let newList;
+      if (isSuccess) {
+        newList = JSON.parse(JSON.stringify(cartList));
+      }
+      let itemExist = newList.find((item) => item.id === mealDetails.id);
+      if (mealDetailsLength > 0) {
+        if (itemExist) {
+          itemExist.quantity += 1;
+          await addQuantity(newList);
+        } else {
+          await addToCartList(mealDetails);
+        }
+      }
 
-      mealDetails > 0 && dispatch(cartListActions());
+      dispatch(
+        UIActions.showNotification({
+          status: "success",
+          title: "Sent!",
+          message: "added to cart",
+        })
+      );
+
+      setTimeout(() => {
+        dispatch(UIActions.showNotification(null));
+      }, 2000);
     } catch (err) {
       dispatch(
         UIActions.showNotification({
           status: "failed",
           title: "Error!",
-          message: "sending data failed",
+          message: "couldn't add to cart",
         })
       );
     }
-    // mealDetailsLength > 0 &&
-    //   dispatch(cartListActions.addToCartList(mealDetails));
   };
 
   return (
