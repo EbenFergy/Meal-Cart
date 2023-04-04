@@ -23,6 +23,9 @@ const CartCounter = ({ id, quantity }) => {
     try {
       if (itemExist) {
         itemExist.quantity -= 1;
+        if (itemExist.quantity <= 0) {
+          newList = newList.filter((item) => item.id !== itemExist.id);
+        }
         await addQuantity(newList);
       }
     } catch (err) {
