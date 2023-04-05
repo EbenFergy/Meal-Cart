@@ -7,7 +7,7 @@ import MealSection from "../../Components/Meals/MealSection";
 import { useGetFoodsQuery } from "../../Redux/slices/foodApiSlice";
 import noView from "../../assets/noView.gif";
 import Footer from "../../Components/Footer/Footer";
-// import SignIn from "../../pages/Auth/SignIn";
+import SignIn from "../../pages/Auth/SignIn";
 // import SignUp from "../../pages/Auth/SignUp";
 import Spinner from "../../Components/Spinner/Spinner";
 import { useSelector } from "react-redux";
