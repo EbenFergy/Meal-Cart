@@ -21,4 +21,4 @@ jobs:
       #runs commands added to "run" using the runner shell
       #Deploy by running a POST request to the netlify build hook provided
       - name: Deploy Site
-      - run: curl -X POST -d {} ${{secrets.NETLIFY_BUILD_HOOK}}
+        run: curl -X POST -d {} ${{secrets.NETLIFY_BUILD_HOOK}}
